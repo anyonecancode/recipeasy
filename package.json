@@ -1,0 +1,19 @@
+{
+  "name": "ziplist",
+  "version": "0.0.1",
+  "description": "Ziplist Resurrected",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.3.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "recipes",
+    "ziplist"
+  ],
+  "author": "Philip Schweiger",
+  "license": "ISC"
+}
