@@ -3,38 +3,38 @@
 
 
 module.exports = function(grunt) {
-  var cache_bust_token = grunt.template.today("yymmddhhmmss"),
-    src = 'web/source',
-    dest = 'web/dist',
-    vendorJs = '',
-    vendorCss = '';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    constants: {
-      cache_bust_token: (function(){
-        return (grunt.option('dev'))? 'dev' : cache_bust_token;
-      }())
-    },
+    cache_bust_token: (function(){
+      return (grunt.option('dev'))? 'dev' : grunt.template.today("yymmddhhmmss");
+    }()),
+
+    src: 'web/source',
+    dest: 'web/dist',
+    vendorJs: ['bower_components/angular/angular.js'],
+    vendorCss: [
+      'bower_components/bootstrap/dist/css/bootstrap.css'
+    ],
 
     /**
      * The directories to delete when 'grunt clean' is executed.
      */
     clean: {
-      release: dest,
+      release: '<%= dest %>',
     },
 
     concat: {
       vendorJs: {
         nonull: true,
         src: '<%= vendorJs %>',
-        dest: '<%= dest %>/js/vendor.<%= constants.cache_bust_token %>.js'
+        dest: '<%= dest %>/js/vendor.js'
       },
       mainJs: {
         nonull: true,
         src: '<%= src %>/js/**/*.js',
-        dest: '<%= dest %>/js/main.<%= constants.cache_bust_token %>.js'
+        dest: '<%= dest %>/js/main.<%= cache_bust_token %>.js'
       }
     },
 
@@ -42,6 +42,11 @@ module.exports = function(grunt) {
       template: {
         src: '<%= src %>/index.html',
         dest: '<%= dest %>/index.html',
+        options: {
+          process: function(content) {
+            return content.replace(/%cache%/g, grunt.config.get('cache_bust_token'));
+          }
+        }
       },
       images: {
         cwd: '<%= src %>/img',
@@ -64,7 +69,7 @@ module.exports = function(grunt) {
           cleancss: !grunt.option('dev')
         },
         files: {
-          '<%= dest %>/css/main.<%= constants.cache_bust_token %>.css': '<%= src %>/less/**/*.less'
+          '<%= dest %>/css/main.<%= cache_bust_token %>.css': '<%= src %>/less/**/*.less'
         }
       },
       vendorCss: {
