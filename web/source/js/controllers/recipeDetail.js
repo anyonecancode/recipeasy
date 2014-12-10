@@ -14,8 +14,6 @@
       }
 
       Recipes.get(id).then(setScope, $log.error);
-      Recipes.get(id);
-      Recipes.get(id);
 
       $scope.$on('contentChanged', function(){
         Recipes.save($scope.recipe);

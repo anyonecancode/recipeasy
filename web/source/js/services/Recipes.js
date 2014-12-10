@@ -9,18 +9,12 @@
         _recipes = {},
         exports = {};
 
-      function cacheRecipe(data) {
-        _recipes[data.id] = data;
-        return data;
-      }
-
       exports.list = function() {
         return _resource.get().$promise;
       };
 
-
       exports.get = function(id) {
-        _recipes[id] = _recipes[id] ||  _resource.get({id: id}).$promise.then(cacheRecipe);
+        _recipes[id] = _recipes[id] || _resource.get({id: id}).$promise;
         return _recipes[id];
       };
 
