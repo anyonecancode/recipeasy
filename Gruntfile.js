@@ -13,7 +13,11 @@ module.exports = function(grunt) {
 
     src: 'web/source',
     dest: 'web/dist',
-    vendorJs: ['bower_components/angular/angular.js'],
+    vendorJs: [
+      'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-resource/angular-resource.js',
+    ],
     vendorCss: [
       'bower_components/bootstrap/dist/css/bootstrap.css'
     ],

@@ -1,0 +1,9 @@
+<header>
+  <h1>Recipes</h1>
+</header>
+
+<ul ng-repeat="recipe in recipes">
+  <li>
+    <a ng-href="/recipes/{{recipe.id}}">{{recipe.title}}</a>
+  </li>
+</ul>

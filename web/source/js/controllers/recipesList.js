@@ -1,0 +1,17 @@
+(function(){
+  'use strict';
+  angular.module('ziplist.controllers').controller('CtrlRecipesList', [
+    '$scope',
+    'Recipes',
+    '$log',
+    function($scope, Recipes, $log){
+
+      $scope.recipes = [];
+
+      function _setScope(recipes) {
+        $scope.recipes = recipes.data;
+      }
+
+      Recipes.list().then(_setScope, $log.error);
+  }]);
+}());
