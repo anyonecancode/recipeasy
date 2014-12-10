@@ -1,3 +1,10 @@
+db:
+  image: tutum/couchdb
+  environment:
+    - "COUCHDB_PASS=pass"
+  ports:
+    - "5984:5984"
+
 api:
   build: api
   ports:
@@ -5,6 +12,9 @@ api:
   volumes:
     - api/app:/app
   command: python app.py
+  links:
+    - db:db
+
 web:
   build: web
   ports:
