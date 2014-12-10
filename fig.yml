@@ -1,6 +1,21 @@
+api:
+  build: api
+  ports:
+    - "5000:5000"
+  volumes:
+    - api/app:/app
+  command: python app.py
 web:
   build: web
   ports:
-    - "80:80"
+    - "8080:80"
   volumes:
     - web/dist:/var/www
+
+server:
+  build: server
+  ports:
+    - "80:80"
+  links:
+    - api:api
+    - web:web
