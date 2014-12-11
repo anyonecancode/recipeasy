@@ -5,6 +5,11 @@ db:
   ports:
     - "5984:5984"
 
+data:
+  build: data
+  links:
+    - db:db
+
 api:
   build: api
   ports:
