@@ -1,4 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, Response
+import urllib2
+import json
+import base64
 
 app = Flask(__name__)
 app.debug = True
@@ -6,23 +9,42 @@ app.api_spec = None
 
 
 url_prefix = '/api'
+username = 'ziplist'
+password = 'pass'
+base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
 
 
-@app.route(url_prefix + '/recipes')
+def createRecipe(recipe):
+    url = 'http://db:5984/recipes'
+    data = json.dumps(recipe)
+    req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
+    req.add_header("Authorization", "Basic %s" % base64string)
+    handle = urllib2.urlopen(req)
+    return Response(handle.read(), mimetype='application/json')
+
+
+@app.route(url_prefix + '/recipes', methods=['GET', 'POST'])
 def index():
-    RecipesList = {
-        'meta': {
-        },
-        'data': [{'id': 1, 'title': 'Amazing Meat Loaf'}]
-    }
-    return jsonify(RecipesList)
+    if request.method == 'POST':
+        return createRecipe(request.json)
+    else:
+        url = 'http://db:5984/recipes/'
+        req = urllib2.Request(url)
+        req.add_header("Authorization", "Basic %s" % base64string)
+        handle = urllib2.urlopen(req)
+        return Response(handle.read(), mimetype='application/json')
 
 
-@app.route(url_prefix + '/recipes/<int:id>', methods=['GET', 'POST'])
+@app.route(url_prefix + '/recipes/<id>', methods=['GET', 'POST'])
 def recipe(id):
+    url = "http://db:5984/recipes/%s" % id
+    req = urllib2.Request(url)
+    req.add_header("Authorization", "Basic %s" % base64string)
+    handle = urllib2.urlopen(req)
+    return Response(handle.read(), mimetype='application/json')
     # if method post, what return?
     Recipe = {
-        'id': id,
+        '_id': id,
         'title': 'Amazing Meat Loaf',
         'servings': 4,
         'description': 'This delicious meatloaf is a sure crowd-pleaser!',

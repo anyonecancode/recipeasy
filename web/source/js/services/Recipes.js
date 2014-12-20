@@ -4,13 +4,19 @@
   angular.module('ziplist.services').factory(
     'Recipes', [
     '$resource',
-    function($resource){
+    '$log',
+    function($resource, $log){
       var _resource = $resource('/api/recipes/:id', {id: '@id'}),
+        _recipeList,
         _recipes = {},
         exports = {};
 
+      function cacheRecipe(recipe) {
+      }
+
       exports.list = function() {
-        return _resource.get().$promise;
+        _recipeList = _recipeList || _resource.get().$promise;
+        return _recipeList;
       };
 
       exports.get = function(id) {
@@ -19,9 +25,17 @@
       };
 
       exports.save = function(recipe) {
-        _recipes[recipe.id] = _resource.save(recipe).$promise.then(cacheRecipe);
-        //if post doesn't return recipe, what then? cache the passed in recipe...
-        return _recipes[recipe.id];
+        var self = this;
+        return _resource.save(recipe).$promise.then(
+          function(response) {
+            //Reset _recipeList
+            _recipeList = null;
+            self.list();
+
+            //Cache the new recipe
+            return self.get(response.id);
+          },
+          $log.error);
       };
 
       return exports;

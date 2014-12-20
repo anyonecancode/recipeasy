@@ -22,6 +22,9 @@ angular.module('ziplist', [
     controller: 'CtrlRecipeDetail',
     templateUrl: '/partials/recipe_detail.html'
   })
+  .when('/new-recipe', {
+    templateUrl: '/partials/recipe_new.html'
+  })
   .otherwise({
     controller: 'Ctrl404',
     templateUrl: '/partials/404.html'
