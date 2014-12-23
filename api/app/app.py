@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, Response
 import urllib2
 import json
 import base64
+import hashlib
 
 app = Flask(__name__)
 app.debug = True
@@ -14,9 +15,9 @@ password = 'pass'
 base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
 
 
-def createRecipe(recipe):
-    url = 'http://db:5984/recipes'
-    data = json.dumps(recipe)
+def dbconn(url, data=None):
+    url = 'http://db:5984/' + url
+    data = json.dumps(data)
     req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
     req.add_header("Authorization", "Basic %s" % base64string)
     handle = urllib2.urlopen(req)
@@ -26,7 +27,12 @@ def createRecipe(recipe):
 @app.route(url_prefix + '/recipes', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        return createRecipe(request.json)
+        recipe = request.json
+        recipe['_id'] = hashlib.md5(repr(recipe)).hexdigest()
+        try:
+            return dbconn('recipes', recipe)
+        except Exception, e:
+            return Response('{"details": "%s"}' % e.reason, e.code, mimetype='application/json')
     else:
         url = 'http://db:5984/recipes/'
         req = urllib2.Request(url)
@@ -38,10 +44,7 @@ def index():
 @app.route(url_prefix + '/recipes/<id>', methods=['GET', 'POST'])
 def recipe(id):
     url = "http://db:5984/recipes/%s" % id
-    req = urllib2.Request(url)
-    req.add_header("Authorization", "Basic %s" % base64string)
-    handle = urllib2.urlopen(req)
-    return Response(handle.read(), mimetype='application/json')
+    return dbconn(url)
     # if method post, what return?
     Recipe = {
         '_id': id,
