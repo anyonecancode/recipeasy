@@ -9,7 +9,7 @@
       $scope.recipes = [];
 
       function _setScope(recipes) {
-        $scope.recipes = recipes.data;
+        $scope.recipes = recipes.rows;
       }
 
       Recipes.list().then(_setScope, $log.error);

@@ -17,7 +17,10 @@ base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
 
 def dbconn(url, data=None):
     url = 'http://db:5984/' + url
-    data = json.dumps(data)
+
+    if data:
+        data = json.dumps(data)
+
     req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
     req.add_header("Authorization", "Basic %s" % base64string)
     handle = urllib2.urlopen(req)
@@ -34,16 +37,13 @@ def index():
         except Exception, e:
             return Response('{"details": "%s"}' % e.reason, e.code, mimetype='application/json')
     else:
-        url = 'http://db:5984/recipes/'
-        req = urllib2.Request(url)
-        req.add_header("Authorization", "Basic %s" % base64string)
-        handle = urllib2.urlopen(req)
-        return Response(handle.read(), mimetype='application/json')
+        url = 'recipes/_design/by_title/_view/ByTitle'
+        return dbconn(url)
 
 
 @app.route(url_prefix + '/recipes/<id>', methods=['GET', 'POST'])
 def recipe(id):
-    url = "http://db:5984/recipes/%s" % id
+    url = "recipes/%s" % id
     return dbconn(url)
     # if method post, what return?
     Recipe = {
