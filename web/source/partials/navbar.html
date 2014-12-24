@@ -1,11 +1,26 @@
-<ul>
-  <li>
-    <a href="/recipes">Recipes</a>
-  </li>
-  <li>
-    <a href="/planning">Meal Planning</a>
-  </li>
-  <li>
-    <a href="/shopping">Shopping List</a>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="navbar-header">
+      <a class="navbar-brand" href="/">Recipes Project</a>
+  </div>
+
+  <!--
+  <ul class="nav navbar-nav">
+    <li>
+      <a href="/recipes">Recipes</a>
+    </li>
+    <li>
+      <a href="/planning">Meal Planning</a>
+    </li>
+    <li>
+      <a href="/shopping">Shopping List</a>
+    </li>
+  </ul>
+  -->
+
+  <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="title or ingredient">
+      <button class="btn btn-default" type="submit">Search</button>
+    </div>
+  </form>
+</div>
