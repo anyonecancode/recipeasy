@@ -1,0 +1,11 @@
+Creation UI
+- if missing field (IE servings), don't pass the key, and on show, put some placeholder..
+- show saving indicator, on save go to display, show errors
+- Required fields?
+- photos?
+
+
+Display
+- /n becomes <br>
+- If missing fields, how show?
+- Have an "edit" mode, not just contenteditabe?
