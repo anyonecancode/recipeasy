@@ -9,6 +9,8 @@ data:
   build: data
   links:
     - db:db
+  volumes:
+    - data/backups:/backups
 
 api:
   build: api
