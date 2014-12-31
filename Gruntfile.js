@@ -63,6 +63,12 @@ module.exports = function(grunt) {
         expand: true,
         src: '**/*',
         dest: '<%= dest %>/partials/'
+      },
+      bootstrapMap:  {
+        cwd: 'node_modules/bootstrap/dist/css',
+        expand: true,
+        src: 'bootstrap.css.map',
+        dest: '<%= dest %>/css/'
       }
     },
 
