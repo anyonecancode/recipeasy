@@ -3,26 +3,22 @@
 </p>
 <section>
   <header>
-    <h1 ng-model="recipe.title" contenteditable>{{recipe.title}}</h1>
-    <h2>Serves <span ng-model="recipe.servings" contenteditable>{{recipe.servings}}</span></h2>
+    <h1 ng-model="recipe.title">{{recipe.title}}</h1>
+    <h2>Serves <span data-ng-model="recipe.servings">{{recipe.servings}}</span></h2>
   </header>
 
-  <section ng-model="recipe.description" contenteditable>
+  <section ng-model="recipe.description">
     {{recipe.description}}
   </section>
 
   <section>
     <h2>Ingredients</h2>
-    <div ng-model="recipe.Ingredients" contenteditable>
-    {{recipe.ingredients}}
-    </div>
+    <div class="pre" data-ng-model="recipe.Ingredients">{{recipe.ingredients}}</div>
   </section>
 
 
   <section>
     <h2>Instructions</h2>
-    <div ng-model="recipe.instructions" contenteditable>
-    {{recipe.instructions}}
-    </div>
+    <div class="pre" data-ng-model="recipe.instructions">{{recipe.instructions}}</div>
   </section>
 </section>
