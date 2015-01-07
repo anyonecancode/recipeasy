@@ -6,6 +6,5 @@ Creation UI
 
 
 Display
-- /n becomes <br>
 - If missing fields, how show?
 - Have an "edit" mode, not just contenteditabe?
