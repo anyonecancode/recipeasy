@@ -1,24 +1,27 @@
 <p>
   <a href="/new-recipe">New Recipe</a>
 </p>
-<section>
-  <header>
-    <h1 ng-model="recipe.title">{{recipe.title}}</h1>
-    <h2>Serves <span data-ng-model="recipe.servings">{{recipe.servings}}</span></h2>
+
+  <header class="page-header">
+    <h1>
+      {{recipe.title}} <br />
+      <small data-ng-if="recipe.servings">Serves {{recipe.servings}}</small>
+    </h1>
   </header>
 
   <section ng-model="recipe.description">
     {{recipe.description}}
   </section>
 
-  <section>
-    <h2>Ingredients</h2>
-    <div class="pre" data-ng-model="recipe.Ingredients">{{recipe.ingredients}}</div>
-  </section>
+  <div class="row">
+    <section class="col-md-4">
+      <h3>Ingredients</h3>
+      <div class="pre" data-ng-model="recipe.Ingredients">{{recipe.ingredients}}</div>
+    </section>
 
 
-  <section>
-    <h2>Instructions</h2>
-    <div class="pre" data-ng-model="recipe.instructions">{{recipe.instructions}}</div>
-  </section>
-</section>
+    <section class="col-md-8">
+      <h3>Directions</h3>
+      <div class="pre" data-ng-model="recipe.instructions">{{recipe.directions}}</div>
+    </section>
+  </div><!--row-->
