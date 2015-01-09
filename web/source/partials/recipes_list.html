@@ -1,10 +1,11 @@
-<p>
-  <a href="/new-recipe">New Recipe</a>
-</p>
+<nav class="nav">
+  <a href="/new-recipe" class="btn btn-link">Add recipe</a>
+</nav>
 
 <header class="page-header">
   <h1>Recipes</h1>
 </header>
+
 
 <div class="list-group">
   <a class="list-group-item" data-ng-repeat="recipe in recipes" data-ng-href="/recipes/{{recipe.id}}">{{recipe.key}}</a>
