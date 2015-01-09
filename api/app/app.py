@@ -32,7 +32,7 @@ def index():
     if request.method == 'POST':
         recipe = request.json
         if '_id' not in recipe:
-            recipe['_id'] = hashlib.md5(repr(recipe)).hexdigest()
+            recipe['_id'] = hashlib.md5(repr(recipe)).hexdigest() #should add timestamp to ensure unique
         try:
             return dbconn('recipes', recipe)
         except Exception, e:
@@ -42,7 +42,7 @@ def index():
         return dbconn(url)
 
 
-@app.route(url_prefix + '/recipes/<id>', methods=['GET', 'POST'])
+@app.route(url_prefix + '/recipes/<id>', methods=['GET'])
 def recipe(id):
     url = "recipes/%s" % id
     return dbconn(url)
