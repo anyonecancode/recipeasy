@@ -31,7 +31,8 @@ def dbconn(url, data=None):
 def index():
     if request.method == 'POST':
         recipe = request.json
-        recipe['_id'] = hashlib.md5(repr(recipe)).hexdigest()
+        if '_id' not in recipe:
+            recipe['_id'] = hashlib.md5(repr(recipe)).hexdigest()
         try:
             return dbconn('recipes', recipe)
         except Exception, e:
@@ -45,26 +46,6 @@ def index():
 def recipe(id):
     url = "recipes/%s" % id
     return dbconn(url)
-    # if method post, what return?
-    Recipe = {
-        '_id': id,
-        'title': 'Amazing Meat Loaf',
-        'servings': 4,
-        'description': 'This delicious meatloaf is a sure crowd-pleaser!',
-        'ingredients':  """
-              1/4 cup ketchup
-              1/2 lb. ground beef
-              1/2 lb. ground pork
-              1 egg
-              1/3 cup dry quick oats
-              1/2 envelope dry onion soup mix
-              """,
-        'instructions': """
-              Preheat oven to 350 degrees.
-              Mix 3 Tbsp ketchup, beef, pork, eggs, oats and soup mix. Shape into a loaf. Place on a greased cookie sheet. Top with 1 Tbsp ketchup. Bake until meat thermometer inserted in the center reads 160 degrees F, 1 to 1 1/4 hours. Let stand 15 minutes before serving.
-              """
-    }
-    return jsonify(Recipe)
 
 
 if __name__ == '__main__':

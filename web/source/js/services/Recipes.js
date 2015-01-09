@@ -11,9 +11,6 @@
         _recipes = {},
         exports = {};
 
-      function cacheRecipe(recipe) {
-      }
-
       exports.list = function() {
         _recipeList = _recipeList || _resource.get().$promise;
         return _recipeList;
@@ -32,7 +29,10 @@
             _recipeList = null;
             self.list();
 
-            //Cache the new recipe
+            //Cache the new recipe, resetting the cache if this is an update
+            if (recipe._id) {
+              _recipes[recipe._id] = null;
+            }
             return self.get(response.id);
           },
           $log.error);

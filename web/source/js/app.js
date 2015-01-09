@@ -25,6 +25,9 @@ angular.module('ziplist', [
   .when('/new-recipe', {
     templateUrl: '/partials/recipe_new.html'
   })
+  .when('/edit-recipe/:id', {
+    templateUrl: '/partials/recipe_new.html'
+  })
   .otherwise({
     controller: 'Ctrl404',
     templateUrl: '/partials/404.html'
