@@ -34,13 +34,25 @@
     </div>
   </div><!--row-->
 
+  <div class="row">
+    <div class="form-group col-md-8">
+      <label for="source">Source (optional)</label>
+      <input
+      class="form-control"
+      data-ng-model="recipe.source"
+      name="source"
+      placeholder="Website, book, etc"
+      type="text" />
+    </div>
+  </div><!--row-->
+
   <div class="form-group">
-    <label for="description">Description/Notes (optional)</label>
+    <label for="description">Description (optional)</label>
     <textarea
       class="form-control"
       data-ng-model="recipe.description"
       name="description"
-      placeholder="Some context, background, or notes"
+      placeholder="Some context or background"
       rows="5"></textarea>
   </div>
 
@@ -67,7 +79,18 @@
         rows="12"></textarea>
     </div>
 
+  </div><!--row-->
+
+  <div class="form-group">
+    <label for="notes">Notes (optional)</label>
+    <textarea
+      class="form-control"
+      data-ng-model="recipe.notes"
+      name="notes"
+      placeholder="Adjustments, things to look out for, etc"
+      rows="3"></textarea>
   </div>
+
 
   <div class="form-group">
     <button class="btn btn-default" type="submit">Save recipe</button>

@@ -3,10 +3,13 @@ Creation UI
 - disable form submission on submit (in case it take a bit of time for db to save)
 - form validation, front and back
 - photos?
-
-- have a hidden field that's "type: recipe", then in views can filter by doc.type
-
+- markdown, to support italics, bold?
+-- w a little hint button on how to use
 
 Display
 - If missing fields, how show?
 - Have an "edit" mode, not just contenteditabe?
+- source: if url, link?
+- Bottom of display page needs padding
+- Fix spacing between rows
+- Maybe fix display to support markdown instead of using pre?

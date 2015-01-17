@@ -10,6 +10,12 @@
     </h1>
   </header>
 
+  <div class="row" data-ng-if="recipe.source">
+    <section class="col-md-12">
+      <p><em>{{recipe.source}}</em></p>
+    </section>
+  </div>
+
   <section ng-model="recipe.description">
     {{recipe.description}}
   </section>
@@ -25,4 +31,9 @@
       <h3>Directions</h3>
       <div class="pre" data-ng-model="recipe.instructions">{{recipe.directions}}</div>
     </section>
+
+  </div><!--row-->
+
+  <div class="row" data-ng-if="recipe.notes">
+    <section ng-model="recipe.notes" class="pre">{{recipe.notes}}</section>
   </div><!--row-->
