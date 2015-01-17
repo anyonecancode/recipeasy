@@ -1,8 +1,10 @@
 Creation UI
-- if missing field (IE servings), don't pass the key, and on show, put some placeholder..
-- show saving indicator, on save go to display, show errors
-- Required fields?
+- show saving indicator
+- disable form submission on submit (in case it take a bit of time for db to save)
+- form validation, front and back
 - photos?
+
+- have a hidden field that's "type: recipe", then in views can filter by doc.type
 
 
 Display

@@ -1,0 +1,17 @@
+{
+  "type" : "couchdb",
+  "couchdb" : {
+    "host" : "db",
+    "port" : 5984,
+    "db" : "recipes",
+    "filter" : null,
+    "user": "admin",
+    "password": "pass"
+  },
+  "index" : {
+    "index" : "recipes",
+    "type" : "recipes",
+    "bulk_size" : "100",
+    "bulk_timeout" : "10ms"
+  }
+}

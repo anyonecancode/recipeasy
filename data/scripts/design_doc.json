@@ -1,0 +1,9 @@
+{
+  "_id":"_design/by_title",
+  "language":"javascript",
+  "views": {
+    "ByTitle": {
+      "map": "function(doc) {if (doc.title) {emit(doc.title, doc.title);}}"
+    }
+  }
+}

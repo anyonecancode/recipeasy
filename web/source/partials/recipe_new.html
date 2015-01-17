@@ -8,8 +8,9 @@
 
 <form form-new-recipe>
 
-  <input data-ng-if="recipe._id" value="{{recipe._id}}" hidden />
-  <input data-ng-if="recipe._rev" value="{{recipe._rev}}" hidden />
+  <input readonly name="type" value="recipe" hidden />
+  <input readonly data-ng-if="recipe._id" value="{{recipe._id}}" hidden />
+  <input readonly data-ng-if="recipe._rev" value="{{recipe._rev}}" hidden />
 
   <div class="row">
     <div class="form-group col-md-8">
