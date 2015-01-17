@@ -23,6 +23,7 @@
 
       exports.save = function(recipe) {
         var self = this;
+        recipe.type = 'recipe';
         return _resource.save(recipe).$promise.then(
           function(response) {
             //Reset _recipeList
