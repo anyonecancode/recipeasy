@@ -4,13 +4,12 @@
     "host" : "db",
     "port" : 5984,
     "db" : "recipes",
-    "filter" : null,
+    "script": "ctx._type = ctx.doc.type",
     "user": "admin",
     "password": "pass"
   },
   "index" : {
     "index" : "recipes",
-    "type" : "doc.type",
     "bulk_size" : "100",
     "bulk_timeout" : "10ms"
   }
