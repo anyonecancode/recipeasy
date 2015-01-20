@@ -28,6 +28,10 @@ angular.module('ziplist', [
   .when('/edit-recipe/:id', {
     templateUrl: '/partials/recipe_new.html'
   })
+  .when('/search', {
+    controller: 'CtrlSearchResults',
+    templateUrl: '/partials/search_results.html'
+  })
   .otherwise({
     controller: 'Ctrl404',
     templateUrl: '/partials/404.html'
