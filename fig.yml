@@ -29,6 +29,7 @@ api:
   command: python app.py
   links:
     - db:db
+    - search:search
 
 web:
   build: web

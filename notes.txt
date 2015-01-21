@@ -6,6 +6,8 @@ Creation UI
 - markdown, to support italics, bold?
 -- w a little hint button on how to use
 
+- Have "stub" and "full recipe" tabs. Stub is a link to, say, an offline recipe in Joy
+
 Display
 - If missing fields, how show?
 - Have an "edit" mode, not just contenteditabe?

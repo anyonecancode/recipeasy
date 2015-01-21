@@ -48,5 +48,34 @@ def recipe(id):
     return dbconn(url)
 
 
+@app.route(url_prefix + '/search', methods=['POST'])
+def search():
+    terms = request.json['terms']
+    url = 'http://search:9200/recipes/_search'
+    data = {
+        "query": {
+            "bool": {
+                "should": [
+                    {"match": {"title": terms}},
+                    {"match": {"description":  terms}},
+                    {"match": {"ingredients":  terms}},
+                    {"match": {"directions":  terms}}
+                ]
+            }
+        },
+        "highlight": {
+            "fields": {
+                "title": {},
+                "description": {},
+                "ingredients": {},
+                "directions": {}
+            }
+        }
+    }
+    req = urllib2.Request(url, json.dumps(data), {'Content-Type': 'application/json'})
+    handle = urllib2.urlopen(req)
+    return Response(handle.read(), mimetype='application/json')
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0')
