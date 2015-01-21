@@ -13,6 +13,7 @@
       exports.query = function(terms){
         _searchTerms = terms;
         _results = _resource.save({'terms': _searchTerms}).$promise;
+        return _results;
       };
 
       exports.getTerms = function() {

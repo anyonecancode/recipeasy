@@ -14,7 +14,7 @@
      $scope.search.terms = Search.getTerms();
 
       function _setScope(results) {
-        $scope.search.results = results.rows;
+        $scope.search.results = results.hits;
       }
 
       Search.retrieveResults().then(_setScope, $log.error);

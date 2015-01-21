@@ -135,9 +135,6 @@ module.exports = function(grunt) {
     grunt.task.run('copy');
     //grunt.task.run('updatepaths');
 
-    if (grunt.option('dev')) {
-      grunt.task.run('watch');
-    }
   });
 
   grunt.registerTask('test', []);

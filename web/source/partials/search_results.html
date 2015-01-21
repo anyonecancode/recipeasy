@@ -1,12 +1,14 @@
 <header class="page-header">
-  <h1>Search Results</h1>
-  <h2>For &ldquo;{{search.terms}}&rdquo;</h2>
+  <h1>Found {{search.results.total}} results for &ldquo;{{search.terms}}&rdquo;</h1>
 </header>
 
-<ul data-ng-repeat="result in search.results">
-  <li>{{result}}</li>
-</ul>
-
-<div class="list-group">
-  <a class="list-group-item" data-ng-repeat="recipe in recipes" data-ng-href="/recipes/{{recipe.id}}">{{recipe.key}}</a>
+<div class="list-group" data-ng-repeat="result in search.results.hits">
+  <header>
+    <h2><a data-ng-href="/recipes/{{result._id}}">{{result._source.title}}</a></h2>
+  </header>
+  <p>Matches in:</p>
+  <ul data-ng-repeat="(field, value) in result.highlight">
+    <li>{{field}}: {{value[0]}}</li>
+  </ul>
+  <p><em>Relevancy Score: {{result._score}}</em></p>
 </div>
