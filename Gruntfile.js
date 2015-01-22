@@ -17,6 +17,7 @@ module.exports = function(grunt) {
       'node_modules/angular/angular.js',
       'node_modules/angular-route/angular-route.js',
       'node_modules/angular-resource/angular-resource.js',
+      'node_modules/angular-sanitize/angular-sanitize.js',
     ],
     vendorCss: [
       'node_modules/bootstrap/dist/css/bootstrap.css'

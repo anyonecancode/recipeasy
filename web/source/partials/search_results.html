@@ -7,8 +7,8 @@
     <h2><a data-ng-href="/recipes/{{result._id}}">{{result._source.title}}</a></h2>
   </header>
   <p>Matches in:</p>
-  <ul data-ng-repeat="(field, value) in result.highlight">
-    <li>{{field}}: {{value[0]}}</li>
+  <ul data-ng-repeat="(field, value) in result.highlight" id="search_results">
+    <li>{{field}}: <span class="highlights" data-ng-bind-html="value[0]"></span></li>
   </ul>
   <p><em>Relevancy Score: {{result._score}}</em></p>
 </div>

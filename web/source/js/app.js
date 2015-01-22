@@ -3,6 +3,7 @@
 
 angular.module('ziplist', [
   'ngRoute',
+  'ngSanitize',
   'ziplist.controllers',
   'ziplist.services',
   'ziplist.directives'
