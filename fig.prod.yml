@@ -1,0 +1,42 @@
+db:
+  image: tutum/couchdb
+  environment:
+    - "COUCHDB_PASS=pass"
+  ports:
+    - "5984:5984"
+
+search:
+  build: search
+  ports:
+    - "9200:9200"
+  links:
+    - db:db
+
+data:
+  build: data
+  links:
+    - db:db
+    - search:search
+  volumes:
+    - data/backups:/backups
+
+api:
+  build: api
+  links:
+    - db:db
+    - search:search
+
+web:
+  build: web
+  ports:
+    - "8080:80"
+  volumes:
+    - web/dist:/var/www
+
+server:
+  build: server
+  ports:
+    - "80:80"
+  links:
+    - api:api
+    - web:web
