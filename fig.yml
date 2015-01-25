@@ -27,6 +27,8 @@ api:
   volumes:
     - api/app:/app
   command: python app.py
+  environment:
+    - "RECIPEASY_DEBUG=True"
   links:
     - db:db
     - search:search

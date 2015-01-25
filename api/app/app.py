@@ -1,25 +1,35 @@
-from flask import Flask, jsonify, request, Response
+from flask import Flask, request, Response
 import urllib2
-import json
-import base64
-import hashlib
+from json import dumps as to_json
+from base64 import encodestring
+from hashlib import md5
+from os import getenv
 
 app = Flask(__name__)
-app.debug = True
+app.debug = getenv('RECIPEASY_DEBUG', False)
 app.api_spec = None
 
+url_prefix = getenv('RECIPEASY_API_URL_PREFIX', '/api')
 
-url_prefix = '/api'
-username = 'ziplist'
-password = 'pass'
-base64string = base64.encodestring('%s:%s' % (username, password))[:-1]
+DB_PROTOCOL = getenv('RECIPEASY_DB_PROTOCOL', 'http')
+DB_HOST = getenv('RECIPEASY_DB_HOST', 'db')
+DB_PORT = getenv('RECIPEASY_DB_PORT', '5984')
+
+username = getenv('RECIPEASY_USERNAME', 'ziplist')
+password = getenv('RECIPEASY_PASSWORD', 'pass')
+base64string = encodestring('%s:%s' % (username, password))[:-1]
+
+SEARCH_PROTOCOL = getenv('RECIPEASY_SEARCH_PROTOCOL', 'http')
+SEARCH_HOST = getenv('RECIPEASY_SEARCH_HOST', 'search')
+SEARCH_PORT = getenv('RECIPEASY_SEARCH_PORT', '9200')
 
 
-def dbconn(url, data=None):
-    url = 'http://db:5984/' + url
+def dbconn(endpoint, data=None):
+    app.logger.debug('hello world')
+    url = "{0}://{1}:{2}/{3}".format(DB_PROTOCOL, DB_HOST, DB_PORT, endpoint)
 
     if data:
-        data = json.dumps(data)
+        data = to_json(data)
 
     req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
     req.add_header("Authorization", "Basic %s" % base64string)
@@ -32,26 +42,26 @@ def index():
     if request.method == 'POST':
         recipe = request.json
         if '_id' not in recipe:
-            recipe['_id'] = hashlib.md5(repr(recipe)).hexdigest() #should add timestamp to ensure unique
+            recipe['_id'] = md5(repr(recipe)).hexdigest()
         try:
             return dbconn('recipes', recipe)
         except Exception, e:
             return Response('{"details": "%s"}' % e.reason, e.code, mimetype='application/json')
     else:
-        url = 'recipes/_design/by_title/_view/ByTitle'
-        return dbconn(url)
+        endpoint = 'recipes/_design/by_title/_view/ByTitle'
+        return dbconn(endpoint)
 
 
-@app.route(url_prefix + '/recipes/<id>', methods=['GET'])
-def recipe(id):
-    url = "recipes/%s" % id
-    return dbconn(url)
+@app.route(url_prefix + '/recipes/<recipe_id>', methods=['GET'])
+def recipe(recipe_id):
+    endpoint = "recipes/{0}".format(recipe_id)
+    return dbconn(endpoint)
 
 
 @app.route(url_prefix + '/search', methods=['POST'])
 def search():
     terms = request.json['terms']
-    url = 'http://search:9200/recipes/_search'
+    endpoint = "{0}://{1}:{2}/recipes/_search".format(SEARCH_PROTOCOL, SEARCH_HOST, SEARCH_PORT)
     data = {
         "query": {
             "bool": {
@@ -72,7 +82,7 @@ def search():
             }
         }
     }
-    req = urllib2.Request(url, json.dumps(data), {'Content-Type': 'application/json'})
+    req = urllib2.Request(endpoint, to_json(data), {'Content-Type': 'application/json'})
     handle = urllib2.urlopen(req)
     return Response(handle.read(), mimetype='application/json')
 
