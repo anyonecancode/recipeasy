@@ -1,9 +1,22 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+DB_HOST=${RECIPEASY_DB_HOST-db}
+DB_PORT=${RECIPEASY_DB_PORT-5984}
+DB_PROTOCOL=${RECIPEASY_DB_PROTOCOL-http}
+DB_ADMIN_USER=${RECIPEASY_DB_ADMIN_USER-admin}
+DB_ADMIN_PASSWORD=${RECIPEASY_DB_ADMIN_PASSWORD-pass}
+DB_NAME=${RECIPEASY_DB_ACCOUNT_USER-recipeasy}
+DB_ACCOUNT_USER=${RECIPEASY_DB_ACCOUNT_USER-recipeasy}
+DB_ACCOUNT_PASSWORD=${RECIPEASY_DB_ACCOUNT_PASSWORD-pass}
 
-DBHOST=admin:pass@db:5984
-SEARCHOST=search:9200
-curl -X PUT $DBHOST/recipes -H "Accept: application/json" -H "Content-type: application/json"
-curl -X PUT $DBHOST/_users/org.couchdb.user:ziplist -H "Accept: application/json" -H "Content-type: application/json" -d '{"name": "ziplist", "password": "pass", "roles": [], "type": "user"}'
-curl -X PUT $DBHOST/recipes/_security -H "Accept: application/json" -H "Content-type: application/json" -d '{"members": {"names": ["ziplist"]}}'
-curl -X PUT $DBHOST/recipes/_design/by_title -H "Accept: application/json" -H "Content-type: application/json" -d "@/app/scripts/design_doc.json"
-curl -X PUT $SEARCHOST/_river/recipes/_meta -H "Accept: application/json" -H "Content-type: application/json" -d "@/app/scripts/couchdb_river.json"
+
+#Setup Elasticsearch
+SEARCH_HOST=${RECIPEASY_SEARCH_HOST-search}
+SEARCH_PORT=${RECIPEASY_SEARCH_PORT-9200}
+SEARCH_PROTOCOL=${RECIPEASY_SEARCH_PROTOCOL-http}
+
+RIVER=$(eval echo `cat /app/scripts/couchdb_river.json`)
+
+curl -v -X PUT ${SEARCH_HOST}:${SEARCH_PORT}/_river/recipes/_meta \
+  -H "Accept: application/json" \
+  -H "Content-type: application/json" \
+  -d "${RIVER}"
