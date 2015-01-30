@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  angular.module('ziplist.controllers').controller('CtrlRecipesList', [
+  angular.module('recipeasy.controllers').controller('CtrlRecipesList', [
     '$scope',
     'Recipes',
     '$log',

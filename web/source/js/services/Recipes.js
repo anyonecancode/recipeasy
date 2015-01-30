@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('ziplist.services').factory(
+  angular.module('recipeasy.services').factory(
     'Recipes', [
     '$resource',
     '$log',

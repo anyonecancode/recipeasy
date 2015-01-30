@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('ziplist.directives').directive('formNewRecipe', [
+  angular.module('recipeasy.directives').directive('formNewRecipe', [
     'Recipes',
     '$routeParams',
     '$location',

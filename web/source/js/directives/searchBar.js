@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  angular.module('ziplist.directives').directive('searchBar', [
+  angular.module('recipeasy.directives').directive('searchBar', [
     'Search',
     '$location',
     function(Search, $location){

@@ -1,12 +1,12 @@
 (function(){
 'use strict';
 
-angular.module('ziplist', [
+angular.module('recipeasy', [
   'ngRoute',
   'ngSanitize',
-  'ziplist.controllers',
-  'ziplist.services',
-  'ziplist.directives'
+  'recipeasy.controllers',
+  'recipeasy.services',
+  'recipeasy.directives'
 ])
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $locationProvider.html5Mode(true);
@@ -39,8 +39,8 @@ angular.module('ziplist', [
   });
 }]);
 
-angular.module('ziplist.controllers', ['ziplist.services']);
-angular.module('ziplist.services', ['ngResource']);
-angular.module('ziplist.directives',[]);
+angular.module('recipeasy.controllers', ['recipeasy.services']);
+angular.module('recipeasy.services', ['ngResource']);
+angular.module('recipeasy.directives',[]);
 
 }());

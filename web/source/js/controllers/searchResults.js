@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  angular.module('ziplist.controllers').controller('CtrlSearchResults', [
+  angular.module('recipeasy.controllers').controller('CtrlSearchResults', [
     '$scope',
     'Search',
     '$routeParams',

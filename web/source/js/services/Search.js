@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('ziplist.services').factory('Search', [
+  angular.module('recipeasy.services').factory('Search', [
     '$resource',
     '$routeParams',
     function($resource, $routeParams){
