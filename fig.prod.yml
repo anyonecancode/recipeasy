@@ -2,18 +2,14 @@ db:
   image: tutum/couchdb
   environment:
     - "COUCHDB_PASS=pass"
-  ports:
-    - "5984:5984"
 
 search:
-  build: search
-  ports:
-    - "9200:9200"
+  image: anyonecancode/recipeasy_search:0.1.0
   links:
     - db:db
 
 data:
-  build: data
+  image: anyonecancode/recipeasy_data:0.1.0
   links:
     - db:db
     - search:search
@@ -21,20 +17,16 @@ data:
     - data/backups:/backups
 
 api:
-  build: api
+  image: anyonecancode/recipeasy_api:0.1.0
   links:
     - db:db
     - search:search
 
 web:
-  build: web
-  ports:
-    - "8080:80"
-  volumes:
-    - web/dist:/var/www
+  image: anyonecancode/recipeasy_web:0.1.0
 
 server:
-  build: server
+  image: anyonecancode/recipeasy_server:0.1.0
   ports:
     - "80:80"
   links:
