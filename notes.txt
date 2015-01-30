@@ -15,3 +15,27 @@ Display
 - Bottom of display page needs padding
 - Fix spacing between rows
 - Maybe fix display to support markdown instead of using pre?
+
+
+Deployment
+- Seems set up for single machine running all docker images - how to set up for distributed? Eg,
+ different services on diff machines
+- Envars and defaults are copied in each service. Seems hard to maintain.  Maybe a make file that
+  sources a single list of envars and then builds images?
+
+
+Maintainance (things needed to be a real project)
+- Deployed and used by at least one user
+- Creation of a roadmap
+- Tests
+- Docs
+- Readme
+
+
+Future Features
+- Something lighter than angular?
+- Drop NPM/Grunt in favor of makefiles?
+- Meal scheduler, w integration to google calendar? Or at least export in ical format
+- Easy export of recipes, in various formats
+- Easy import of a recipe export
+- Auto-adding recipes from foreign urls?
