@@ -2,31 +2,28 @@
 
 ## Meal planning made easy
 
-For a few years, my family was using a website call Ziplist for meal planning. Ziplist was a place
-to store recipes you added or found on other sites (it had a nifty little browser plugin for easily
-adding recipes you found while browsing the web), and then let you create meal plans and shopping
-lists based on those recipes.
+For a few years, my family was using a website call [Ziplist](http://www.ziplist.com/goodbye.html)
+for meal planning. Ziplist was a recipe app that included a nice little browser toolbar plugin for
+easy importing of recipes from other sites. Even more useful was the ability to make meal plans and
+shopping lists based off of your recipes.
 
-We found it super helpful for weekly meal planning, which saved us money by helping us be more
-intentional about the food we bought.
+Unfortunately for us -- though fortunately for Ziplist, I hope -- they were bought out by
+[Epicurious.com](http://www.epicurious.com/), and so we lost our meal planning tool. It wasn't
+without its quirks and bugs, but it did what we needed it to do.
 
-Unfortunately for us -- though fortunately for Ziplist, I hope -- they were bought out by TK, and so
-we lost our meal planning tool. It wasn't without its quirks and bugs, but it did what we needed it
-to do.
-
-As a professional software developer, I found those bugs a bit annoying, and I always had it in the
-back of my head that it would be fun to try making my own meal planning app. With the demise of
-Ziplist, actually acting on that idea would now also be concretely useful.
+Still, I found those bugs a bit annoying, and I always had it in the back of my head that it would
+be fun to try making my own meal planning app. With the demise of Ziplist, actually acting on that
+idea would now also be concretely useful.
 
 This is primarily a personal project, so development pace and feature scope will be limited. Anyone
 who stumbles across this repo is welcome to fork it, send me pull requests, and use this code
-(cosistent with the GNU GPL), but I'm not planning on deploying this anywhere public myself. As I've
-conceived this project, it's an app intended for a single user (or maybe a small group of users).
+(consistent with the [GNU GPL](http://www.gnu.org/licenses/gpl-3.0-standalone.html)), but I'm not
+planning on deploying this anywhere public myself. As I've conceived this project, it's an app
+intended for a single user (or maybe a small group of users).
 
-I'm not trying to change the world, or disrupt anyone, or even launch yet another recipe site. In
-other words, this project is most definitely _not_ Web Scale (tm). It's a fun way for me to mess
-about with a few web technologies and, hopefully, make a tool I personally find useful as well.
-
+I'm not trying to change the world, or disrupt any industries, or even launch yet another recipe
+site. In other words, this project is most definitely _not_ Web Scale (tm). It's a fun way for me to
+mess about with a few web technologies and, hopefully, make a tool I personally find useful as well.
 
 ## Architecture
 
@@ -36,18 +33,20 @@ manual, but I might possibly expand the scope to include an auto-import tool to 
 recipes from other sites.
 
 I've broken the app up into small, discrete services for the search, api, storage, and UI components.
-I'm using DOCKER (TK Link) for running the whole stack in development and, potentially, for
-deployment as well.
+I'm using [Docker](https://www.docker.com/) for running  the whole stack in development and,
+potentially, for deployment as well.
 
 ### Database - CouchDB
 
 I'm using CouchDB as the database/persistent storage layer. I had originally planned on using
 Postgresql, but as I worked through the data model I realized that it made more sense to think of
-recipes as documents rather than joined relations fields.  For instance, how exactly would a list of
-ingredients work in a relational approach? Is 1/4 teaspoon of crushed red pepper the same ingredient
-as 1/4 tablespoon of ground red pepper? It might work to have a field for "base ingredient", eg
-"chicken", and then fields for subtypes and amounts ("dice", "roasted", etc), but then you've set
-yourself the task of normalizing the nearly infinite ways ingredient and amounts appear in recipes.
+recipes as documents rather than discrete fields joined together.
+
+For instance, how exactly would a list of ingredients work in a relational approach? Is 1/4 teaspoon
+of crushed red pepper the same ingredient as 1/4 tablespoon of ground red pepper? It might work to
+have a field for "base ingredient", eg "chicken", and then fields for subtypes and amounts ("diced",
+"roasted", etc), but then you've set yourself the task of normalizing the nearly infinite ways
+ingredient and amounts appear in recipes.
 
 No, it's easier to just accept that documents belong in a document store, not a relational database.
 
@@ -72,3 +71,15 @@ an ORM.
 The web UI is an angularjs app. Given my strippe-down approach in the other components, this might
 be a bit heavy, but for now its convenience is outweighing my urge toward minimalism.
 
+
+## Roadmap
+
+I'm more or less following the semantic version approach to tagging releases.  Until I have this
+deployed and in use, I'll be keeping it in the 0.xx.xx series.  I'll increment the minor version
+for new features, and the patch version for updates that don't add features.
+
+After I reach 1.x, I'll follow the standard semver approach of major releases being breaking
+changes, minor adding features but keeping backward compatibility, and patch releases fixing bugs.
+
+Prior to the 1.x, all changes are potentially breaking. At some point in the future I'll actually
+add a changlelog and what I plan on doing by each release target.
