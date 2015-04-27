@@ -1,9 +1,10 @@
 from flask import Flask, request, Response
 import urllib2
-from json import dumps as to_json
+from json import dumps as to_json, loads as from_json
 from base64 import encodestring
 from hashlib import md5
 from os import getenv
+from elasticsearch import Elasticsearch
 
 app = Flask(__name__)
 app.debug = getenv('RECIPEASY_API_DEBUG', False)
@@ -26,8 +27,13 @@ SEARCH_PROTOCOL = getenv('RECIPEASY_SEARCH_PROTOCOL', 'http')
 SEARCH_HOST = getenv('RECIPEASY_SEARCH_HOST', 'search')
 SEARCH_PORT = getenv('RECIPEASY_SEARCH_PORT', '9200')
 
+search_client = Elasticsearch(["{0}://{1}:{2}".format(
+    SEARCH_PROTOCOL, SEARCH_HOST, SEARCH_PORT)])
 
-def dbconn(endpoint, data=None):
+last_search_seq = 1
+
+
+def dbconn(endpoint, data=None, to_object=False):
     url = "{0}://{1}:{2}/{3}".format(DB_PROTOCOL, DB_HOST, DB_PORT, endpoint)
 
     if data:
@@ -36,7 +42,44 @@ def dbconn(endpoint, data=None):
     req = urllib2.Request(url, data, {'Content-Type': 'application/json'})
     req.add_header("Authorization", "Basic %s" % base64string)
     handle = urllib2.urlopen(req)
-    return Response(handle.read(), mimetype='application/json')
+
+    if to_object:
+        return from_json(handle.read())
+    else:
+        return Response(handle.read(), mimetype='application/json')
+
+
+def get_db_changelog():
+    last_search_seq = search_client.get('recipes',
+                                        doc_type='changes',
+                                        id=1)['_source']['last_seq']
+
+    db_changes_endpoint = "{0}/_changes?filter=by_title/recipes&since={1}".format(
+        ACCOUNT_USER, last_search_seq)
+
+    return dbconn(db_changes_endpoint, None, True)
+
+
+def update_search():
+    latest_changes = get_db_changelog()
+
+    if len(latest_changes['results']) < 1:
+        return
+
+    for result in latest_changes['results']:
+        record = dbconn('%s/%s' % (ACCOUNT_USER, result['id']), None, True)
+        try:
+            search_client.index(index='recipes',
+                                doc_type='recipe',
+                                id=result['id'],
+                                body=record)
+        except Exception, e:
+            app.logger.info(e)
+
+    search_client.index(index='recipes',
+                        doc_type='changes',
+                        id=1,
+                        body={'last_seq': latest_changes['last_seq']})
 
 
 @app.route(url_prefix + '/recipes', methods=['GET', 'POST'])
@@ -46,9 +89,13 @@ def index():
         if '_id' not in recipe:
             recipe['_id'] = md5(repr(recipe)).hexdigest()
         try:
-            return dbconn(ACCOUNT_USER, recipe)
+            confirmation = dbconn(ACCOUNT_USER, recipe)
+            update_search()
+            return confirmation
         except Exception, e:
-            return Response('{"details": "%s"}' % e.reason, e.code, mimetype='application/json')
+            app.logger.error(e)
+            return Response('{"details": "%s"}' %
+                            e.reason, e.code, mimetype='application/json')
     else:
         endpoint = '%s/_design/by_title/_view/ByTitle' % ACCOUNT_USER
         return dbconn(endpoint)
@@ -62,6 +109,7 @@ def recipe(recipe_id):
 
 @app.route(url_prefix + '/search', methods=['POST'])
 def search():
+    update_search()
     terms = request.json['terms']
     endpoint = "{0}://{1}:{2}/recipes/_search".format(SEARCH_PROTOCOL, SEARCH_HOST, SEARCH_PORT)
     data = {

@@ -6,7 +6,7 @@ db:
     - "5984:5984"
 
 search:
-  build: search
+  image: elasticsearch:1.4.3
   ports:
     - "9200:9200"
   links:

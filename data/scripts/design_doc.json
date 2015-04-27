@@ -5,5 +5,8 @@
     "ByTitle": {
       "map": "function(doc) {if (doc.title) {emit(doc.title, doc.title);}}"
     }
+  },
+  "filters": {
+    "recipes": "function(doc) {return doc.type === 'recipe';}"
   }
 }

@@ -4,12 +4,12 @@ db:
     - "COUCHDB_PASS=pass"
 
 search:
-  image: anyonecancode/recipeasy_search:0.1.0
+  image: elasticsearch:1.4.3
   links:
     - db:db
 
 data:
-  image: anyonecancode/recipeasy_data:0.1.0
+  image: anyonecancode/recipeasy_data:0.2.0
   links:
     - db:db
     - search:search
@@ -17,7 +17,7 @@ data:
     - data/backups:/backups
 
 api:
-  image: anyonecancode/recipeasy_api:0.1.0
+  image: anyonecancode/recipeasy_api:0.2.0
   links:
     - db:db
     - search:search

@@ -36,10 +36,14 @@ SEARCH_HOST=${RECIPEASY_SEARCH_HOST-search}
 SEARCH_PORT=${RECIPEASY_SEARCH_PORT-9200}
 SEARCH_PROTOCOL=${RECIPEASY_SEARCH_PROTOCOL-http}
 
-echo "Setting up river"
+echo "Setting up recipes index"
 
-curl -X PUT ${SEARCH_HOST}:${SEARCH_PORT}/_river/recipes/_meta \
+curl -X PUT ${SEARCH_HOST}:${SEARCH_PORT}/recipes \
   -H "Accept: application/json" \
   -H "Content-type: application/json" \
-  -d '{ "type" : "couchdb", "couchdb" : { "host" : "'${DB_HOST}'", "port" : '${DB_PORT}', "db" :
-"'${DB_ACCOUNT_USER}'", "script": "ctx._type = ctx.doc.type", "user": "'${DB_ACCOUNT_USER}'", "password": "'${DB_ACCOUNT_PASSWORD}'" }, "index" : { "index" : "recipes", "bulk_size" : "100", "bulk_timeout" : "10ms" } }'
+
+echo "Setting up search-db change tracker"
+curl -X PUT ${SEARCH_HOST}:${SEARCH_PORT}/recipes/changes/1 \
+  -H "Accept: application/json" \
+  -H "Content-type: application/json" \
+  -d '{"last_seq":"1"}'
