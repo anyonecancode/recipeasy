@@ -129,9 +129,8 @@ def search():
             }
         }
     }
-    req = urllib2.Request(endpoint, to_json(data), {'Content-Type': 'application/json'})
-    handle = urllib2.urlopen(req)
-    return Response(handle.read(), mimetype='application/json')
+    res = search_client.search(index='recipes', body=data)
+    return Response(to_json(res), mimetype='application/json')
 
 
 if __name__ == '__main__':
