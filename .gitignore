@@ -4,3 +4,4 @@ node_modules
 web/dist
 web/source/less/*.css
 *.pyc
+fig.prod.yml
