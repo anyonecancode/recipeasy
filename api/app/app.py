@@ -16,12 +16,9 @@ DB_PROTOCOL = getenv('RECIPEASY_DB_PROTOCOL', 'http')
 DB_HOST = getenv('RECIPEASY_DB_HOST', 'db')
 DB_PORT = getenv('RECIPEASY_DB_PORT', '5984')
 
-ADMIN_USER = getenv('RECIPEASY_DB_ACCOUNT_USER', 'recipeasy')
-ADMIN_PASSWORD = getenv('RECIPEASY_DB_ACCOUNT_PASSWORD', 'pass')
-base64string = encodestring('%s:%s' % (ADMIN_USER, ADMIN_PASSWORD))[:-1]
-
 ACCOUNT_USER = getenv('RECIPEASY_DB_ACCOUNT_USER', 'recipeasy')
 ACCOUNT_PASSWORD = getenv('RECIPEASY_DB_ACCOUNT_PASSWORD', 'pass')
+base64string = encodestring('%s:%s' % (ACCOUNT_USER, ACCOUNT_PASSWORD))[:-1]
 
 SEARCH_PROTOCOL = getenv('RECIPEASY_SEARCH_PROTOCOL', 'http')
 SEARCH_HOST = getenv('RECIPEASY_SEARCH_HOST', 'search')
