@@ -6,7 +6,7 @@
     '$resource',
     '$log',
     function($resource, $log){
-      var _resource = $resource('/api/recipes/:id', {id: '@id'}),
+      var _resource = $resource('/api/recipes/:id', {id: '@id'}, {import: {method:'POST', url: '/api/import'}}),
         _recipeList,
         _recipes = {},
         exports = {};
@@ -37,6 +37,10 @@
             return self.get(response.id);
           },
           $log.error);
+      };
+
+      exports.import = function(source) {
+        return _resource.import(source).$promise;
       };
 
       return exports;

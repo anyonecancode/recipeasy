@@ -133,5 +133,10 @@ def search():
     return Response(to_json(res), mimetype='application/json')
 
 
+@app.route(url_prefix + '/import', methods=['POST'])
+def import_recipe():
+    pass
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0')
