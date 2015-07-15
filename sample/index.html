@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<!--[if lte IE 7]> <html id='ie7' class='ie' xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'> <![endif]-->
+<!--[if IE 8]> <html id='ie8' class='ie' xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'> <![endif]-->
+<!--[if IE 9]> <html id='ie9' class='ie' xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'> <![endif]-->
+<!--[if gt IE 9]> <html id='ie10' class='ie' xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'> <![endif]-->
+<!--[if !IE]><!-->
+<html xmlns:og='http://ogp.me/ns#' xmlns='http://www.w3.org/1999/xhtml'>
+<!--<![endif]-->
+<head>
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"3d6de21ce4","applicationID":"4571969","transactionName":"IFYNTUYJCVgHExZKAABQE1xHSRZcDRY=","queueTime":5,"applicationTime":19,"agent":"js-agent.newrelic.com/nr-632.min.js"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UwQCV1RWGwcFU1BbAQg="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:23,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:24,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:24,2:25,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:25,2:24,ee:"QJf3ax"}],9:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:25,2:24,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=o(t[0],"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:25,2:24,ee:"QJf3ax"}],11:[function(t,e){function n(){f.inPlace(this,p,"fn-")}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:7,2:25,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:11,4:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],14:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:23,2:24,handle:"D5DuLP"}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:23,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],23:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],24:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],25:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:24,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);</script>
+<link href='/apple-touch-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
+<link href='/apple-touch-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
+<link href='/apple-touch-icon-72x72.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='/apple-touch-icon-76x76.png' rel='apple-touch-icon' sizes='76x76'>
+<link href='/apple-touch-icon-114x114.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='/apple-touch-icon-120x120.png' rel='apple-touch-icon' sizes='120x120'>
+<link href='/apple-touch-icon-144x144.png' rel='apple-touch-icon' sizes='144x144'>
+<link href='/apple-touch-icon-152x152.png' rel='apple-touch-icon' sizes='152x152'>
+<link href='/apple-touch-icon-180x180.png' rel='apple-touch-icon' sizes='180x180'>
+<link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/favicon.ico' rel='shortcut icon'>
+<title>Recipe: Asparagus &amp; Spring Onion Tart with Arugula &amp; Mache Salad - Blue Apron</title>
+<meta content='This savory, light tart is the perfect celebration of spring, using the first ripe harvests of asparagus and (aptly named) spring onions. You’ll make a quick and easy, rich and flaky crust using whole wheat flour and olive oil. A filling of vegetables, farm fresh eggs and a little bit of sweet and slightly salty Gruyere even out this wonderful, festive dish.' name='description'>
+<meta content='1703523' property='fb:admins'>
+<meta content='2474' property='fb:admins'>
+<meta content='268433919926057' property='fb:app_id'>
+
+<link href="//media.blueapron.com/assets/recipe-print-54bdbc3cbaf0696d4ea9088127588557.css" media="print" rel="stylesheet" type="text/css" />
+
+<link href="//media.blueapron.com/assets/app-285f9efbe1f18fae49f59bad48fdd2cf.css" media="screen" rel="stylesheet" type="text/css" />
+<!--[if lte IE 7]>
+<script src="//media.blueapron.com/assets/json3-b5318e30c9369a182310e1a50793c34f.js" type="text/javascript"></script>
+<![endif]-->
+<script src="//cdn.optimizely.com/js/214661394.js" type="text/javascript"></script>
+<script src="//media.blueapron.com/assets/application-1c5790a459f04e6760d277b4f539496e.js" type="text/javascript"></script>
+<script>
+  //<![CDATA[
+    //detect if the device is a tablet or not. If not, include viewport meta tag
+    //uses MobileEsp javscript: http://blog.mobileesp.com/
+    var tabr = MobileEsp.DetectTierTablet();
+    if(tabr){
+    }
+    else {
+        document.write('<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">');
+    }
+  //]]>
+</script>
+<!--[if lte IE 7]>
+<script src="//media.blueapron.com/assets/modal-ie-c3aec7463eae338564a04869f8f120db.js" type="text/javascript"></script>
+<![endif]-->
+
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="Qof85GGlA+BYXmp0lp9pxdoO1PzJ+JBtlwrzKvyCHJg=" name="csrf-token" />
+<meta content='Blue Apron' property='og:site_name'>
+<meta content='article' property='og:type'>
+<meta content='Asparagus &amp; Spring Onion Tart with Arugula &amp; Mache Salad' property='og:title'>
+<meta content='This savory, light tart is the perfect celebration of spring, using the first ripe harvests of asparagus and (aptly named) spring onions. You’ll make a quick and easy, rich and flaky crust using whole wheat flour and olive oil. A filling of vegetables, farm fresh eggs and a little bit of sweet and slightly salty Gruyere even out this wonderful, festive dish.' property='og:description'>
+<meta content='https://www.blueapron.com/recipes/asparagus-spring-onion-tart-with-arugula-frisee-salad' property='og:url'>
+<link href='https://www.blueapron.com/recipes/asparagus-spring-onion-tart-with-arugula-frisee-salad' rel='canonical'>
+<meta content='https://media.blueapron.com/recipes/374/c_main_dish_images/20140808-2038-852-4836/Asparagus_20and_20Spring_20Onion_20Tart-_high_feature.jpg' property='og:image'>
+<script src="//media.blueapron.com/assets/recipes/recipe-27453d0c7520b362f34809c80326ca69.js" type="text/javascript"></script>
+
+</head>
+<body class='recipe-page'>
+<script>
+  //<![CDATA[
+    $(function() {
+      dataLayer.push({
+        recipeId: 374
+      });
+    });
+  //]]>
+</script>
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KWZPFP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-KWZPFP');</script>
+<!-- End Google Tag Manager -->
+
+<div class='content-wrap'>
+<div class='content-wrap-scroll'>
+<div id='body-wrap'>
+<header class='ios-app-hide' id='header-main'>
+<div class='container'>
+<div class='pull-right small-hide' id='member-portal'>
+<div class='welcome-bar logged-in'>
+<span class='member-name'></span>
+<a href="/users/sign_out" class="sign-out logged-in" data-method="delete" rel="nofollow">(Log out)</a>
+</div>
+<a href="/account" class="my-acct logged-in hide js-AccountLink" id="my_account_nav_link">My Account</a>
+<span class='notification logged-in hide'>
+<span></span>
+</span>
+<div class='sign-in logged-out'>
+<a href="/users/sign_in" class="portal-sign-in">Log In</a>
+<a href="/users/sign_up" class="btn btn-orange btn--header" id="js-SignUpBtn">Sign Up</a>
+</div>
+</div>
+
+<div class='pull-left' id='logo'>
+<a href="/"><img alt="Blue Apron" src="//media.blueapron.com/assets/logo/blue-apron-logo@2x-e88a5d59616ee9d85447839a90b8f9b0.png" />
+</a></div>
+<div class='mobile-only basket-area'>
+<div class='js-BasketView basket-hldr'>
+<span class='basket-ico'></span>
+<span class='basket-num'>
+&nbsp;
+</span>
+</div>
+</div>
+<button class='btn btn-navbar mobile-only' data-target='.nav-collapse' data-toggle='collapse' type='button'>
+Menu
+</button>
+<div class='nav-collapse collapse'>
+<nav id='main-nav'>
+<ul class='nav nav-pills header-nav'>
+<li><a href="/pages/learn-more" id="nav_learn_more">Learn More</a></li>
+<li><a href="/pages/sample-recipes" id="nav_on_the_menu">On The Menu</a></li>
+<li class='logged-out'><a href="/pages/pricing" id="nav_pricing">Pricing</a></li>
+<li><a href="/market" id="nav_shop">Market</a></li>
+<li class='js-BasketView basket-hldr desktop-basket'>
+<span class='basket-ico'></span>
+<span class='basket-num'>
+&nbsp;
+</span>
+</li>
+
+</ul>
+<div class='mobile-portal mobile-only'>
+<a href="/account" class="my-acct logged-in hide js-AccountLink" id="my_account_nav_link_mobile">My Account</a>
+<span class='notification logged-in hide'>
+<span></span>
+</span>
+<a href="/users/sign_in" class="mobile-sign-in logged-out">Log In</a>
+<a href="/users/sign_up" class="mobile-sign-in logged-out">Sign Up</a>
+<a href="/users/sign_out" class="mobile-sign-out logged-in" data-method="delete" rel="nofollow">Log Out</a>
+</div>
+</nav>
+</div>
+
+</div>
+</header>
+<div class='ios-app-hide' id='header-spacer'></div>
+
+<div id='head-promo'>
+<div class='container'>
+<div class='promo-content'>
+<span class='promo-message js-PromoMessage'>
+&nbsp;
+</span>
+<div class='promo-btn-hldr'>
+<a href="/users/sign_up" class="btn btn-orange" id="js-RedeemPromo">Redeem Offer</a>
+</div>
+</div>
+</div>
+<div class='js-PromoClose promo-close'>
+&times;
+</div>
+</div>
+
+<div class='recipe-page-main' id='main' role='main'>
+<div class='header-messages'>
+<div class='alert hide' id='messages'>
+<a class='close js-HideAlert' href='#'>&times;</a>
+<div class='content'></div>
+</div>
+<div class='modal hide fade' id='flash_modal' tabindex='-1'>
+<div class='modal-header'>
+<button class='close' data-dismiss='modal' type='button'>x</button>
+<h3></h3>
+</div>
+<div class='modal-body'>
+<div class='message'></div>
+</div>
+</div>
+<div class='modal hide fade' id='error_modal' tabindex='-1'>
+<div class='modal-body'>
+<button class='close' data-dismiss='modal' type='button'>x</button>
+<h4>
+We were unable to process your request. Please refresh the page and try
+again.
+<br>
+<br>
+If the problem persists, please contact
+<a href='mailto:contact@blueapron.com'>contact@blueapron.com</a>
+</h4>
+<button class='btn btn-primary' data-dismiss='modal' type='button'>OK</button>
+</div>
+</div>
+
+</div>
+
+
+
+
+<span itemscope itemtype='http://schema.org/Recipe'>
+<meta content='2014-03-31' itemprop='datePublished'>
+<meta content='Blue Apron' itemprop='author'>
+<meta content='https://media.blueapron.com/recipes/374/c_main_dish_images/20140808-2038-852-4836/Asparagus_20and_20Spring_20Onion_20Tart-_high_feature.jpg' itemprop='image thumbnailUrl'>
+<section class='section-rec-basics js-RecipeArea' data-area-name='basics' id='basics'>
+<div class='container'>
+<div class='holder rec-basics-hldr'>
+<div class='title-hldr'>
+<div class='title-area' itemprop='name'>
+<h1 class='main-title'>
+Asparagus &amp; Spring Onion Tart
+</h1>
+<h2 class='sub-title'>
+with Arugula &amp; Mache Salad
+</h2>
+</div>
+<div class='cta-area'>
+<a href="/users/sign_up" class="btn btn-orange recipe-cta-btn pull-right" id="js-TopButton"><span class='btn-txt'>Get This Recipe Delivered</span>
+</a></div>
+</div>
+<nav class='nav-hldr' id='action-nav'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-12'>
+<ul class='subnav nav' id='nav-container'>
+<li class='nav-item'>
+<a class='js-ScrollNav' data-area-name='basics' href='#basics'>
+Recipe Basics
+</a>
+</li>
+<li class='nav-item'>
+<a class='js-ScrollNav' data-area-name='ingredients' href='#ingredients'>
+Ingredients
+</a>
+</li>
+<li class='nav-item'>
+<a class='js-ScrollNav' data-area-name='instructions' href='#instructions'>
+Instructions
+</a>
+</li>
+<li class='nav-item hidden-nav'>
+<a class='js-ScrollNav' data-area-name='reviews' href='#reviews'></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<div class='rec-splash-img-holder'>
+<img alt="Asparagus &amp; Spring Onion Tart with Arugula &amp; Mache Salad" class="rec-splash-img" src="//media.blueapron.com/recipes/374/c_main_dish_images/20140808-2038-852-4836/Asparagus_20and_20Spring_20Onion_20Tart-_splash_feature.jpg" />
+</div>
+<div class='rec-description-hldr'>
+<div class='rec-description-area'>
+<div class='rec-descrip-section recipe-servings'>
+<p>
+<span class='field-name'>Makes:</span>
+<span itemprop='recipeYield'>2 Servings</span>
+</p>
+<p>
+<span class='field-name'>Calories:</span>
+About
+<span itemprop='nutrition' itemscope itemtype='http://schema.org/NutritionInformation'>
+<span itemprop='calories'>700</span>
+</span>
+Per Serving
+</p>
+<div class='rec-descrip-section recipe-description'>
+<p itemprop='description'>This savory, light tart is the perfect celebration of spring, using the first ripe harvests of asparagus and (aptly named) spring onions. You’ll make a quick and easy, rich and flaky crust using whole wheat flour and olive oil. A filling of vegetables, farm fresh eggs and a little bit of sweet and slightly salty Gruyere even out this wonderful, festive dish.</p>
+</div>
+<div class='rec-descrip-section badges'>
+<div class='social-hldr'>
+<div class='recipe-social'>
+<div class='recipe-social-button recipe-fb-like'>
+<div class='fb-like' data-href='https://www.blueapron.com/recipes/asparagus-spring-onion-tart-with-arugula-frisee-salad' data-layout='button_count' data-send='false' data-show-faces='false' data-width='150'></div>
+</div>
+<div class='recipe-social-button recipe-tweet'>
+<a class='twitter-share-button' data-text='Asparagus &amp; Spring Onion Tart with Arugula &amp; Mache Salad from blueapron.com.' data-url='https://www.blueapron.com/recipes/asparagus-spring-onion-tart-with-arugula-frisee-salad' data-via='blueapron' href='https://twitter.com/share'>
+Tweet
+</a>
+</div>
+<div class='recipe-social-button recipe-pin'>
+<a href="http://pinterest.com/pin/create/button/?title=Asparagus+%26+Spring+Onion+Tart+with+Arugula+%26+Mache+Salad&media=%2F%2Fmedia.blueapron.com%2Frecipes%2F374%2Fc_main_dish_images%2F20140808-2038-852-4836%2FAsparagus_20and_20Spring_20Onion_20Tart-_high_feature.jpg&description=Asparagus+%26+Spring+Onion+Tart+with+Arugula+%26+Mache+Salad.+Visit+https%3A%2F%2Fwww.blueapron.com%2F+to+receive+the+ingredients.&url=https%3A%2F%2Fwww.blueapron.com%2Frecipes%2Fasparagus-spring-onion-tart-with-arugula-frisee-salad" class="pin-it-button" count-layout="horizontal"><img border='0' src='//assets.pinterest.com/images/PinExt.png' title='Pin It'>
+</a></div>
+</div>
+
+</div>
+<div class='badge-hldr'>
+<i class='veg-icon'></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='section-rec-ingredients container' id='ingredients'>
+<div class='holder'>
+<div class='rec-area-title'>
+<h2 class='rec-section-text'>
+Ingredients
+</h2>
+<a href="//media.blueapron.com/recipes/374/c_card_pdfs/20140415-1518-2-4311/asparagus-tart-v4.pdf" class="pdf-download-link" target="_blank"><span class='pdf-ico'>PDF</span>
+<span class='pdf-txt'>Download a PDF of this recipe</span>
+</a></div>
+<div class='rec-area-content'>
+<div class='row'>
+<div class='ingredients-img-hldr col-md-8'>
+<span class='img-center-helper'></span>
+<img alt="Asparagus &amp; Spring Onion Tart with Arugula &amp; Mache Salad ingredients" class="ingredients-img" src="//media.blueapron.com/recipes/374/ingredient_images/20140807-2214-1602-9785/Asparagus-on-tart-ing-WEB3_large_feature.png" />
+<div class='ing-modal' id='js-IngModal'>
+<div class='ing-modal-title'>
+<h5></h5>
+<i class='close-icon js-IngModalClose'></i>
+</div>
+</div>
+</div>
+<div class='ingredients-list-hldr col-md-4'>
+<h5>On the Cutting Board</h5>
+<ul class='ingredients-list'>
+<li itemprop='ingredients'>
+<span class='amount'>2</span> Cloves Garlic
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>2</span> Ounces Gruyere Cheese
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>2</span> Spring Onions
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>1</span> Bunch Parsley
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>1</span> Ounce Mache
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>1</span> Lemon
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>½</span> Bunch Asparagus
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>½</span> Cup All-Purpose Flour
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>½</span> Cup Whole Wheat Flour
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>2</span> Farm Eggs
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>1</span> Tablespoon Whole Grain Dijon Mustard
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>2</span> Ounces Arugula
+</li>
+<li itemprop='ingredients'>
+<span class='amount'>½</span> Cup Low-Fat Milk
+</li>
+<input id='last_index' type='hidden' value='0'>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='section-rec-instructions container' id='instructions'>
+<div class='holder'>
+<div class='rec-area-title'>
+<h2 class='rec-section-text'>
+Instructions
+</h2>
+<div class='step-link-hldr'>
+<a class='step-link js-StepLaunch' href='#'>
+<div class='step-icon'></div>
+<span class='step-link-text'>Click for Tablet View</span>
+</a>
+</div>
+</div>
+<div class='rec-area-content'>
+<div class='step-row row'>
+<div class='instr-step col-md-6 col-xs-12'>
+<img alt="Prepare the ingredients:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2336/20140723-2028-4746-7458/Asparagus_and_Spring_Onion_Tart--2_high_feature.jpg" />
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>1</span>
+<span class='instr-title'>
+Prepare the ingredients:
+</span>
+</div>
+<div class='instr-txt'>
+
+	Preheat the oven to 375&deg;F. Wash and dry the fresh produce. Peel and thinly slice the garlic. Grate the Gruyere cheese. Separate the white bulbs and green tops of the spring onions; cut the bulb into &frac12;-inch slices; thinly slice the green parts on an angle. Trim off and discard the woody stems of the asparagus; cut the asparagus into 2-inch pieces. Pick the parsley off the stems; discard the stems. Using a peeler, remove the yellow rind of the lemon, avoiding the white pith; mince the peel to get 2 teaspoons of lemon zest. Quarter the lemon and remove the seeds.
+
+</div>
+</div>
+</div>
+<div class='instr-step col-md-6 col-xs-12'>
+<img alt="Prepare the crust:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2337/20140723-2027-3606-9967/step2_high_feature.jpg" />
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>2</span>
+<span class='instr-title'>
+Prepare the crust:
+</span>
+</div>
+<div class='instr-txt'>
+
+	In a medium bowl, combine the <strong>whole wheat and all-purpose</strong> <strong>flours</strong>. Stir in <strong>&frac14; cup of olive oil</strong> and <strong>&frac14; cup of cold water</strong>, just until the dough forms a soft ball, being careful not to over-mix. Gently press the dough into the bottom and sides of an oven-safe baking dish and poke a few holes into the dough using a fork. Bake 13 to 15 minutes, or until lightly browned. Remove from oven and set aside, then increase the oven temperature to 425&deg;F.
+
+</div>
+</div>
+</div>
+</div>
+<div class='step-row row'>
+<div class='instr-step col-md-6 col-xs-12'>
+<img alt="Cook the vegetables:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2338/20140723-2027-5772-7416/step3_high_feature.jpg" />
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>3</span>
+<span class='instr-title'>
+Cook the vegetables:
+</span>
+</div>
+<div class='instr-txt'>
+
+	While the crust is baking, in a large pan, heat 2 teaspoons of olive oil on medium until hot. Add the <strong>garlic,</strong> <strong>white parts of the onion </strong>and<strong> asparagus</strong>. Season with salt and pepper and cook, stirring occasionally, 3 to 4 minutes, or until the asparagus is tender and bright green and the onion is slightly softened. Transfer to a plate and let cool.
+
+</div>
+</div>
+</div>
+<div class='instr-step col-md-6 col-xs-12'>
+<img alt="Make the filling:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2339/20140723-2028-5778-5723/step4_high_feature.jpg" />
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>4</span>
+<span class='instr-title'>
+Make the filling:
+</span>
+</div>
+<div class='instr-txt'>
+
+	In a medium bowl, whisk together the <strong>eggs, lemon zest, whole grain Dijon mustard,</strong> <strong>&frac12;</strong> <strong>cup milk </strong>(you will have extra milk), <strong>half the parsley </strong>(roughly chopping or tearing the leaves, if you&rsquo;d like) and <strong>all but a pinch of the</strong> <strong>cheese </strong>(save the rest for the tart). Continue whisking until well combined. Season with salt and pepper.
+
+</div>
+</div>
+</div>
+</div>
+<div class='step-row row'>
+<div class='instr-step col-md-6 col-xs-12'>
+<img alt="Assemble &amp; bake the tart:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2340/20140723-2028-5784-6395/step5_high_feature.jpg" />
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>5</span>
+<span class='instr-title'>
+Assemble &amp; bake the tart:
+</span>
+</div>
+<div class='instr-txt'>
+
+	Once the vegetables have cooled, add the <strong>cooked spring onion and asparagus mixture </strong>to the <strong>filling </strong>and pour the mixture into the <strong>pre-baked crust</strong>. Sprinkle the <strong>remaining cheese</strong> on top of the tart and bake 20 to 22 minutes, or until the filling is completely set and the top is browned. (Cooking times may vary depending on the size and depth of your baking dish. The shallower your dish, the faster the baking time will be.) Remove from the oven and let stand for at least 5 minutes before serving.
+
+</div>
+</div>
+</div>
+<div class='instr-step col-md-6 col-xs-12'>
+<img alt="Dress the mache:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2341/20140723-2028-3612-9812/Asparagus_and_Spring_Onion_Tart-2617_high_feature.jpg" />
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>6</span>
+<span class='instr-title'>
+Dress the mache:
+</span>
+</div>
+<div class='instr-txt'>
+
+	Just before serving, toss the <strong>arugula,</strong> <strong>mache </strong>and<strong> half the green parts of the onions </strong>with a drizzle of olive oil and <strong>the</strong> <strong>juice of 1 to 2 lemon wedges</strong> (you may have extra lemon wedges); season with salt and pepper to taste. To plate your dish, divide the <strong>tart</strong> between 2 plates and serve with the <strong>dressed salad</strong> on the side. Garnish the tart with the<strong> remaining parsley and green parts of the onion.</strong> Enjoy!
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='section-rec-reviews container' id='reviews'>
+<div class='holder'>
+<div class='row rec-area-content'>
+<div class='fb-comments-hldr col-md-6'>
+<h3>Tips from Home Chefs</h3>
+<div class='fb-comments' data-href='http://www.blueapron.com/recipes/asparagus-spring-onion-tart-with-arugula-frisee-salad' data-num-posts='3' data-width='100%'></div>
+</div>
+<div class='menu-item-hldr col-md-6'>
+<h3>About Blue Apron</h3>
+<div class='hero-image'>
+<img alt="Ba-hero" class="img-flex" src="//media.blueapron.com/assets/recipe-proto/ba-hero-448b5571d9798fd2f73b8a3ff65187f8.jpg" />
+</div>
+<p class='menu-item-text'>
+Blue Apron delivers original, step-by-step recipes and fresh ingredients to customers nationwide. Our menus change every week, so with each delivery you learn to cook inventive new dishes with seasonal ingredients.  By letting us source these hard-to-find ingredients for you, you'll get food that is fresher and cheaper than you can get at your local supermarket, and there's no waste because we only send you what you need for each recipe.
+</p>
+<p class='menu-item-text'>
+We named our company &ldquo;Blue Apron&rdquo; because chefs around the world wear blue aprons when they're learning to cook, and it has become a symbol of lifelong learning in cooking. We believe you're never done learning in the kitchen, so we design our menus to ensure you're always learning new cooking techniques, trying new cuisines, and using unique ingredients.
+</p>
+<p class='guest-only menu-item-text'>
+Blue Apron is a weekly subscription service with no commitment - you can skip a week or cancel at anytime with a week's notice, and delivery is always free. We can't wait to cook with you!
+</p>
+<a href="/users/sign_up" class="recipe-cta-btn btn btn-orange btn--full" id="js-BottomButton"><span class='btn-txt'>Get This Recipe Delivered</span>
+</a></div>
+</div>
+</div>
+</section>
+</span>
+<div class='step-by-step-modal js-StepModal'>
+<div class='modal-bar'>
+<div class='bar-inner'>
+<h3 class='modal-step-title'>
+<div class='step-icon'></div>
+Asparagus &amp; Spring Onion Tart
+</h3>
+<i class='close-icon js-StepModalClose'></i>
+</div>
+</div>
+<div class='js-StepSlides'>
+<div class='slide-item'>
+<div class='instr-step odd-step'>
+<div class='instr-img-hldr'>
+<img alt="Prepare the ingredients:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2336/20140723-2028-4746-7458/Asparagus_and_Spring_Onion_Tart--2_retina_feature.jpg" />
+</div>
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>1</span>
+<span class='instr-title'>
+Prepare the ingredients:
+</span>
+</div>
+<div class='instr-txt'>
+
+	Preheat the oven to 375&deg;F. Wash and dry the fresh produce. Peel and thinly slice the garlic. Grate the Gruyere cheese. Separate the white bulbs and green tops of the spring onions; cut the bulb into &frac12;-inch slices; thinly slice the green parts on an angle. Trim off and discard the woody stems of the asparagus; cut the asparagus into 2-inch pieces. Pick the parsley off the stems; discard the stems. Using a peeler, remove the yellow rind of the lemon, avoiding the white pith; mince the peel to get 2 teaspoons of lemon zest. Quarter the lemon and remove the seeds.
+
+</div>
+</div>
+</div>
+</div>
+<div class='slide-item'>
+<div class='instr-step even-step'>
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>2</span>
+<span class='instr-title'>
+Prepare the crust:
+</span>
+</div>
+<div class='instr-txt'>
+
+	In a medium bowl, combine the <strong>whole wheat and all-purpose</strong> <strong>flours</strong>. Stir in <strong>&frac14; cup of olive oil</strong> and <strong>&frac14; cup of cold water</strong>, just until the dough forms a soft ball, being careful not to over-mix. Gently press the dough into the bottom and sides of an oven-safe baking dish and poke a few holes into the dough using a fork. Bake 13 to 15 minutes, or until lightly browned. Remove from oven and set aside, then increase the oven temperature to 425&deg;F.
+
+</div>
+</div>
+<div class='instr-img-hldr'>
+<img alt="Prepare the crust:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2337/20140723-2027-3606-9967/step2_retina_feature.jpg" />
+</div>
+</div>
+</div>
+<div class='slide-item'>
+<div class='instr-step odd-step'>
+<div class='instr-img-hldr'>
+<img alt="Cook the vegetables:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2338/20140723-2027-5772-7416/step3_retina_feature.jpg" />
+</div>
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>3</span>
+<span class='instr-title'>
+Cook the vegetables:
+</span>
+</div>
+<div class='instr-txt'>
+
+	While the crust is baking, in a large pan, heat 2 teaspoons of olive oil on medium until hot. Add the <strong>garlic,</strong> <strong>white parts of the onion </strong>and<strong> asparagus</strong>. Season with salt and pepper and cook, stirring occasionally, 3 to 4 minutes, or until the asparagus is tender and bright green and the onion is slightly softened. Transfer to a plate and let cool.
+
+</div>
+</div>
+</div>
+</div>
+<div class='slide-item'>
+<div class='instr-step even-step'>
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>4</span>
+<span class='instr-title'>
+Make the filling:
+</span>
+</div>
+<div class='instr-txt'>
+
+	In a medium bowl, whisk together the <strong>eggs, lemon zest, whole grain Dijon mustard,</strong> <strong>&frac12;</strong> <strong>cup milk </strong>(you will have extra milk), <strong>half the parsley </strong>(roughly chopping or tearing the leaves, if you&rsquo;d like) and <strong>all but a pinch of the</strong> <strong>cheese </strong>(save the rest for the tart). Continue whisking until well combined. Season with salt and pepper.
+
+</div>
+</div>
+<div class='instr-img-hldr'>
+<img alt="Make the filling:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2339/20140723-2028-5778-5723/step4_retina_feature.jpg" />
+</div>
+</div>
+</div>
+<div class='slide-item'>
+<div class='instr-step odd-step'>
+<div class='instr-img-hldr'>
+<img alt="Assemble &amp; bake the tart:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2340/20140723-2028-5784-6395/step5_retina_feature.jpg" />
+</div>
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>5</span>
+<span class='instr-title'>
+Assemble &amp; bake the tart:
+</span>
+</div>
+<div class='instr-txt'>
+
+	Once the vegetables have cooled, add the <strong>cooked spring onion and asparagus mixture </strong>to the <strong>filling </strong>and pour the mixture into the <strong>pre-baked crust</strong>. Sprinkle the <strong>remaining cheese</strong> on top of the tart and bake 20 to 22 minutes, or until the filling is completely set and the top is browned. (Cooking times may vary depending on the size and depth of your baking dish. The shallower your dish, the faster the baking time will be.) Remove from the oven and let stand for at least 5 minutes before serving.
+
+</div>
+</div>
+</div>
+</div>
+<div class='slide-item'>
+<div class='instr-step even-step'>
+<div class='instr-wrap' itemprop='recipeInstructions'>
+<div class='instr-title-hldr'>
+<span class='instr-num'>6</span>
+<span class='instr-title'>
+Dress the mache:
+</span>
+</div>
+<div class='instr-txt'>
+
+	Just before serving, toss the <strong>arugula,</strong> <strong>mache </strong>and<strong> half the green parts of the onions </strong>with a drizzle of olive oil and <strong>the</strong> <strong>juice of 1 to 2 lemon wedges</strong> (you may have extra lemon wedges); season with salt and pepper to taste. To plate your dish, divide the <strong>tart</strong> between 2 plates and serve with the <strong>dressed salad</strong> on the side. Garnish the tart with the<strong> remaining parsley and green parts of the onion.</strong> Enjoy!
+
+</div>
+</div>
+<div class='instr-img-hldr'>
+<img alt="Dress the mache:" class="img-max" src="//media.blueapron.com/recipes/374/recipe_steps/2341/20140723-2028-3612-9812/Asparagus_and_Spring_Onion_Tart-2617_retina_feature.jpg" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='storyModal modal-structure'>
+<div class='story-modal-inner'>
+<div class='rec-content-txt'>
+<div class='text-area js-text-cont'></div>
+</div>
+</div>
+</div>
+<script>
+  //<![CDATA[
+    var recipeId = 374;
+    var recipeDate = "04/21/14";
+  //]]>
+</script>
+
+
+</div>
+<div class='ios-app-hide' id='body-push'></div>
+</div>
+<div class='info-modal-contents hide' id='js-NewsletterModal' tabindex='-1'>
+<div class='modal-inner newsletter-inner'>
+<div class='modal-contents-hldr newsletter-content'>
+<div class='recipe-img-wrap'>
+<img alt="Introducing our Market" class="main-content main-slide-img img-flex" src="//media.blueapron.com/assets/new-design/newsletter-popup-80bf50bd473ff83f8234db664580c96a.jpg" />
+<img alt="Recipe cards" class="recipe-pdf-content main-slide-img img-flex hide" src="//media.blueapron.com/assets/new-design/learn-more/LEARNMORE-recipe-card-82ec28c2b397e36f6526c6788de9444e.png" />
+</div>
+<div class='newsletter-form-hldr'>
+<div class='newsletter-form-area'>
+<h3 class='newsletter-title'>
+<span class='main-content'>Free recipes from Blue Apron!</span>
+<span class='recipe-pdf-content hide'>Join Blue Apron to receive a free PDF of this recipe.</span>
+<span class='recipe-pdf-content-complete hide'>Thanks for subscribing!</span>
+</h3>
+<h5 class='newsletter-subtitle'>
+Get our latest recipes &amp; cooking tips sent to your inbox every week.
+</h5>
+<form accept-charset="UTF-8" action="/newsletter/subscribe" class="simple_form new_newsletter_subscriber" id="recipe_newsletter_modal_form" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Qof85GGlA+BYXmp0lp9pxdoO1PzJ+JBtlwrzKvyCHJg=" /></div><div class="control-group hidden"><div class="controls"><input class="hidden" id="newsletter_subscriber_source" name="newsletter_subscriber[source]" type="hidden" value="Modal" /></div></div>
+<label class='newsletter-subscriber-label' for='newsletter-subscriber'>Enter your email address</label>
+<div class='input-wrap control-group'>
+<input class='newsletter-subscriber' data-validate="{required: true, email: true, messages: {email: 'Invalid email'}}" name='newsletter_subscriber[email]' type='text'>
+<button class='newsletter-subscriber-btn' type='submit'>Join</button>
+</div>
+</form>
+
+<p class='recipe-pdf-content-complete recipe-pdf-holder hide'>
+<a href="" target="_blank">Click here</a> to download a PDF of this recipe.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  //<![CDATA[
+    window.NewsletterModal = {
+      defaults: {
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        wrapCSS: 'newsletter-modal',
+        padding: 0,
+        closeBtn: true,
+        margin: 0,
+        afterShow: function() {
+          $('.new_newsletter_subscriber','.newsletter-modal').validate({});
+          $('.modal-inner','.newsletter-modal').animate({'opacity':1},150);
+        },
+        beforeClose: function() {
+          $('.modal-inner','.newsletter-modal').animate({'opacity':1},150);
+        }
+      },
+      setSeenCookie: function() {
+        $.cookie('recipe_newsletter_modal_seen', true, {
+          expires: 365,
+          path:    '/'
+        });
+      },
+      setPdfSeenCookie: function() {
+        $.cookie('recipe_pdf_newsletter_modal_seen', true, {
+          expires: 365,
+          path:    '/'
+        });
+    
+        Blueapron.Analytics.trackEvent({
+          category: 'Recipe PDF Newsletter',
+          action:   'PDF Newsletter Modal Shown'
+        });
+      },
+      enableRecipePdf: function(modal) {
+        modal.find('.main-content').hide();
+        modal.find('.recipe-pdf-content').show();
+        modal.find('#newsletter_subscriber_source').val('Recipe PDF Modal')
+    
+        modal.find('form').on('submit', function(event) {
+          event.preventDefault();
+    
+          var form = $(event.currentTarget);
+    
+          if(!form.valid()) { return false; }
+    
+          var data = _.reduce(form.serializeArray(), function(data, i) {
+            data[i.name] = i.value;
+            return data;
+          }, {});
+    
+          var email = data['newsletter_subscriber[email]'];
+    
+          var done = function() {
+            var pdfUrl = $('.pdf-download-link').attr('href');
+            $('.recipe-pdf-holder a').attr('href', pdfUrl);
+    
+            $('.newsletter-title span').hide();
+            $('.recipe-pdf-content-complete').show();
+            $('.newsletter-form-area form').hide();
+            $('.newsletter-subtitle').hide();
+    
+            Blueapron.Analytics.trackEvent({
+              category: 'Recipe PDF Newsletter',
+              action:   'PDF Newsletter Subscribed',
+              note:     email
+            });
+    
+            $.cookie('newsletter_subscriber', true, { path: '/', expires: 365 });
+          };
+    
+          $.post('/newsletter/subscribe', data).done(done);
+    
+          return false;
+        });
+      },
+      show: function(opts) {
+        var modal = $('#js-NewsletterModal');
+    
+        setTimeout(function() {
+          var options = _.extend(window.NewsletterModal.defaults, opts);
+    
+          if(opts.recipePdf) {
+            options.beforeShow = function() {
+              window.NewsletterModal.enableRecipePdf(this.inner);
+            };
+    
+            window.NewsletterModal.setPdfSeenCookie();
+          } else {
+            window.NewsletterModal.setSeenCookie();
+          }
+    
+          $.fancybox(modal.html(), options);
+        }, 100);
+      }
+    };
+  //]]>
+</script>
+
+<script>
+  //<![CDATA[
+    $(function() {
+      var userAttributes = $.cookie('user_attributes');
+      var isModalSeen = $.cookie('recipe_newsletter_modal_seen');
+      if (userAttributes || isModalSeen) {
+        return false;
+      }
+    
+      // Make sure the page does not have a flash message before showing the modal
+      if(!$("#flash_notice").length) {
+        window.NewsletterModal.show({ closeBtn: false });
+      }
+    });
+  //]]>
+</script>
+
+
+<footer class='footer ios-app-hide'>
+<div class='container' id='footer-content'>
+<div class='row-fluid'>
+<ul class='press-footer-logos'>
+<li>
+<a class='press-sprite-wall-street-journal' href='/pages/press#wall-street-journal'></a>
+</li>
+<li>
+<a class='press-sprite-techcrunch' href='/pages/press#techcrunch'></a>
+</li>
+<li>
+<a class='press-sprite-good-morning-america' href='/pages/press#good-morning-america'></a>
+</li>
+<li>
+<a class='press-sprite-new-york-times' href='/pages/press#new-york-times'></a>
+</li>
+</ul>
+</div>
+<div class='stay-connected'>
+<div class='row-fluid row-new'>
+<div class='span3 col-md-3 desktop-only'>
+<h3 class='epsilon footer-title'>
+Follow Us
+</h3>
+<ul class='socials'>
+<li><a href="http://www.facebook.com/blueapron" class="fb" target="_BLANK">Like us on Facebook</a></li>
+<li><a href="http://twitter.com/blueapron" class="tw" target="_BLANK">Follow us on Twitter</a></li>
+<li><a href="http://instagram.com/blueapron" class="ig" target="_BLANK">Follow us on Instagram</a></li>
+<li><a href="http://pinterest.com/blueapron/" class="pin" target="_BLANK">Check us out on Pinterest</a></li>
+</ul>
+</div>
+<div class='join span6 col-md-6'>
+<div class='footer-newsletter-signup clearfix'>
+<h3 class='epsilon footer-title'>
+Get free recipes
+</h3>
+<div class='footer-newsletter-form-hldr'>
+<form accept-charset="UTF-8" action="/newsletter/subscribe" class="csrf-ajax" id="recipe_newsletter_footer_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ZCJ5J4igcVLkNVehre3Q0ovpPTpApdjlGBIv22QD7KU=" /></div>
+<input id="newsletter_subscriber_source" name="newsletter_subscriber[source]" type="hidden" value="Footer newsletter form" />
+<input id="newsletter_subscriber_receive_meat_fish" name="newsletter_subscriber[receive_meat_fish]" type="hidden" value="1" />
+<input class="required email" data-validate="{required: true, email: true, messages: {email: &#x27;Invalid email&#x27;}}" id="newsletter_subscriber_email" name="newsletter_subscriber[email]" placeholder="Email Address" type="text" />
+<button class='btn' value='submit'>Go</button>
+</form>
+
+</div>
+<p>A new menu in your inbox every week</p>
+<script>
+  //<![CDATA[
+    $(document).ready(function(){
+      $("#recipe_newsletter_footer_form").validate({
+        unhighlight: function(element) {
+          $(element).siblings('p.error').remove();
+        },
+        errorClass: "error",
+        errorPlacement: function(error, element) {
+          error.insertAfter(element.next());
+        }
+      });
+    });
+  //]]>
+</script>
+</div>
+</div>
+<div class='blog-preview span3 col-md-3 desktop-only'>
+<h3 class='epsilon footer-title'>
+<a href="http://blog.blueapron.com">From the Blog</a>
+</h3>
+<div class='head clearfix'>
+<a href="http://blog.blueapron.com/breakfast-for-a-full-house-melon-parfait/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=breakfast-for-a-full-house-melon-parfait" class="blog-preview-img"><img alt="Square-parfait-75x75" src="//dz6lfdxqpu2f9.cloudfront.net/wp-content/uploads/2015/07/Square-parfait-75x75.jpg" />
+</a><h4 class='blog-preview-text'>
+<a href="http://blog.blueapron.com/breakfast-for-a-full-house-melon-parfait/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=breakfast-for-a-full-house-melon-parfait">Breakfast for A Full House: Melon Parfait</a>
+</h4>
+</div>
+</div>
+</div>
+</div>
+<ul class='socials-mobile small-only'>
+<li><a href="http://www.facebook.com/blueapron" class="fb" target="_BLANK">Like us on Facebook</a></li>
+<li><a href="http://twitter.com/blueapron" class="tw" target="_BLANK">Follow us on Twitter</a></li>
+<li><a href="http://instagram.com/blueapron" class="ig" target="_BLANK">Follow us on Instagram</a></li>
+<li><a href="http://pinterest.com/blueapron/" class="pin" target="_BLANK">Check us out on Pinterest</a></li>
+</ul>
+</div>
+<div class='footer-bottom row-fluid'>
+<div class='container clearfix'>
+<div class='row-new'>
+<ul class='footer-nav span8 col-md-8 col-xs-12 nav nav-pills'>
+<li><a href="http://blog.blueapron.com">Blog</a></li>
+<li><a href="http://support.blueapron.com">Contact &amp; FAQ</a></li>
+<li><a href="/cookbook">Cookbook</a></li>
+<li><a href="/pages/meet-our-recent-partners">Suppliers</a></li>
+<li><a href="/gifts">Gifts</a></li>
+<li><a href="/pages/jobs">Jobs</a></li>
+<li><a href="/pages/press">Press</a></li>
+<li><a href="/pages/team">Team</a></li>
+</ul>
+<div class='span4 col-md-4 col-xs-12 copy footer-copy'>
+&copy; Blue Apron, Inc. 2015
+<a href="/pages/privacy">Privacy</a>
+<a href="/pages/terms">Terms</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+</div>
+</div>
+<div class='marketplace-cart' id='js-MarketCart'>
+<div class='cart-contents-area'>
+<div class='cart-title-hldr'>
+<h2 class='cart-title'>
+<span class='icon icon-basket'></span>
+<span class='title-text'>
+Your Blue Apron Basket
+<span class='basket-num hide'></span>
+</span>
+</h2>
+</div>
+<div class='cart-product-area'>
+<div class='cart-btn-hldr' id='js-TopCartBtn'>
+<div class='cart-btn'>
+<span class='js-CloseCart continue-btn'>
+<span class='arrow-icon'></span>
+Continue Browsing
+</span>
+</div>
+<div class='cart-btn js-CartCheckoutArea'>
+<a href="/market/checkout" class="checkout-btn">Checkout</a>
+<span class='checkout-btn-disabled'>Checkout</span>
+</div>
+</div>
+<div class='cart-items hldr' id='js-CartItemArea'>
+Loading...
+</div>
+<div class='cart-btn-hldr'>
+<div class='cart-btn'>
+<span class='js-CloseCart continue-btn'>
+<span class='arrow-icon'></span>
+Continue Browsing
+</span>
+</div>
+<div class='cart-btn js-CartCheckoutArea'>
+<a href="/market/checkout" class="checkout-btn">Checkout</a>
+<span class='checkout-btn-disabled'>Checkout</span>
+</div>
+</div>
+</div>
+<div class='cart-footer-hldr logged-out'>
+<p class='sign-up'>
+To manage your Blue Apron membership,
+<a href='/users/sign_in' target='_BLANK'>Log in</a>
+or
+<a href='/users/sign_up' target='_BLANK'>Sign up</a>
+here.
+</p>
+</div>
+</div>
+<div class='js-BackboneLoading backbone-loading'>
+<span class='spinner-area'>
+<span class='loader-txt'>Updating Your Basket&hellip;</span>
+</span>
+</div>
+</div>
+
+<script src="//media.blueapron.com/assets/footer-d54c9d548c2fe7a0139a98b43ca45007.js" type="text/javascript"></script>
+<script src="//media.blueapron.com/assets/marketplace/cart-76bb56f23ba515a0fd60708116883811.js" type="text/javascript"></script>
+<script>
+  //<![CDATA[
+    var userLogged = $.cookie('user_attributes') ? true : false;
+    
+    var share_click_action, save_variation, save_variation_not_logged, saveOptimizelyVariation;
+    
+    if(!userLogged) {
+      share_click_action = function(suppress_message, share_source) {
+        Blueapron.Analytics.trackEvents({
+          category: "Share",
+          action: share_source,
+          note: 'Unauthenticated User shared via: ' + share_source
+        });
+      }
+    } else {
+      share_click_action = function(suppress_message, share_source) {
+        Blueapron.Analytics.trackEvents({
+          category: "Share",
+          action: share_source,
+          note: 'User shared via: ' + share_source,
+          properties: {
+            share_source: share_source
+          }
+        });
+      }
+    }
+    save_variation = function(variation_id) {
+      $.ajax({
+        type: "POST",
+        url: "/save_test_variation",
+        dataType: "json",
+        data: {variation_id: variation_id}
+      });
+    }
+    
+    save_variation_not_logged = function(variation_id) {
+      // If user is not logged in save variations the user participated in a cookie
+      var variations = $.cookie('site_test_participated') ? $.cookie('site_test_participated').split(',') : [];
+      if(_.indexOf(variations,variation_id) == '-1') {
+        variations.push(variation_id);
+        $.cookie('site_test_participated', variations.join(), { path: '/' });
+      }
+    }
+    
+    saveOptimizelyVariation = function() {
+      var experiments = $.cookie('site_tests') ? $.cookie('site_tests').split('&') : [];
+      // Remove any experiments that are already captured in the session
+      // These experiments are currently being processed in delayed job
+      var session_experiments = [];
+      if (session_experiments.length > 0 && experiments.length > 0) {
+        for(var i=0; i < session_experiments.length; i++) {
+          var index = _.indexOf(experiments,session_experiments[i]);
+          experiments.splice(index, 1);
+        }
+      }
+    
+    
+      // If site_test_participated cookie exists
+      var site_test_participated = $.cookie('site_test_participated');
+      if (userLogged && site_test_participated) {
+        site_test_participated = site_test_participated.split(',');
+        for(var i=0;i<site_test_participated.length;i++) {
+          save_variation(site_test_participated[i]);
+        }
+        $.removeCookie('site_test_participated', { path:'/' });
+      }
+    
+      if($.isEmptyObject(experiments)) {
+        // do nothing
+      } else {
+        for(var i=0; i<experiments.length; i++) {
+          var experimentId = experiments[i];
+          if (typeof(optimizely) != "undefined" &&
+            optimizely.variationMap.hasOwnProperty(experimentId)) {
+                // Make sure that the variation Ids array is not empty
+              if (optimizely.variationIdsMap[experimentId].length > 0) {
+                var variationId = optimizely.variationIdsMap[experimentId][0];
+                if(userLogged)
+                  save_variation(variationId);
+                else
+                  save_variation_not_logged(variationId)
+              }
+          }
+        }
+      }
+    }
+    
+    $(document).ready(function() {
+      saveOptimizelyVariation();
+    });
+  //]]>
+</script>
+
+<script>
+  //<![CDATA[
+    /*
+     * Third party Facebook
+     */
+    
+    // Facbook Like
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '268433919926057',
+        version    : 'v2.0',
+        channelUrl : '//www.blueapron.com/channel.html', // Channel File
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+    
+      // Additional initialization code here
+      FB.Event.subscribe('edge.create', function(response) {
+        if(_.indexOf(response,"projects") > 0) {
+          share_click_action(true, 'project-fb-widget-like');
+        }
+      });
+    
+      FB.Event.subscribe('message.send', function(response) {
+        share_click_action(false, 'project-fb-widget-message');
+      });
+      // FB Auth status change callback
+      FB.Event.subscribe('auth.statusChange', window.fbAuthChange);
+      // FB object is ready
+      FB.Event.subscribe('xfbml.render', window.fbEnsureInit);
+    };
+    
+    // Load the Facebook SDK Asynchronously
+    (function(d){
+       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement('script'); js.id = id; js.async = true;
+       js.src = "//connect.facebook.com/en_US/sdk.js";
+       ref.parentNode.insertBefore(js, ref);
+     }(document));
+  //]]>
+</script>
+
+<script>
+  //<![CDATA[
+    $(document).ready(function(){
+      /*
+       * Third party Twitter/Pinterest
+       */
+      // Twitter Share
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    
+      // Pinterest
+      (function() {
+          window.PinIt = window.PinIt || { loaded:false };
+          if (window.PinIt.loaded) return;
+          window.PinIt.loaded = true;
+          function async_load(){
+              var s = document.createElement("script");
+              s.type = "text/javascript";
+              s.async = true;
+              if (window.location.protocol == "https:")
+                  s.src = "https://assets.pinterest.com/js/pinit.js";
+              else
+                  s.src = "http://assets.pinterest.com/js/pinit.js";
+              var x = document.getElementsByTagName("script")[0];
+              x.parentNode.insertBefore(s, x);
+          }
+          if (window.attachEvent)
+              window.attachEvent("onload", async_load);
+          else
+              window.addEventListener("load", async_load, false);
+      })();
+    });
+  //]]>
+</script>
+<div id='pixel_wrapper'>
+<script>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33873510-1']);
+    _gaq.push(['_setDomainName', 'blueapron.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    
+    var google_conversion_id = 995692811;
+    var google_conversion_label = "UIfoCLWJ1wMQi6Lk2gM";
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+  //]]>
+</script>
+
+<script src="//www.googleadservices.com/pagead/conversion.js" type="text/javascript"></script>
+<noscript>
+<div style='display:inline;'>
+<img alt="" height="1" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995692811/?value=0&label=UIfoCLWJ1wMQi6Lk2gM&guid=ON&script=0" style="border-style:none;" width="1" />
+</div>
+</noscript>
+
+</div>
+<script>
+  //<![CDATA[
+    $(function() {
+      Blueapron.FlashMessage.check();
+      Blueapron.FlashMessage.check('gtm_events');
+    
+      var nanigansConversion = $.cookie('nanigans_newsletter_conversion');
+      if (typeof nanigansConversion != 'undefined' && nanigansConversion != null) {
+        $.removeCookie('nanigans_newsletter_conversion');
+        dataLayer.push({
+          event: 'nanigansNewsletterConversion',
+          userEmail: nanigansConversion
+        });
+      }
+    });
+  //]]>
+</script>
+
+<link href="//cloud.typography.com/7214432/782582/css/fonts.css" media="all" rel="stylesheet" type="text/css" />
+</body>
+</html>

@@ -5,6 +5,7 @@ from base64 import encodestring
 from hashlib import md5
 from os import getenv
 from elasticsearch import Elasticsearch
+from bs4 import BeautifulSoup as bs4
 
 app = Flask(__name__)
 app.debug = getenv('RECIPEASY_API_DEBUG', False)
@@ -135,8 +136,18 @@ def search():
 
 @app.route(url_prefix + '/import', methods=['POST'])
 def import_recipe():
-    pass
-
+    Recipe = {}
+    source = 'http://sample:8080'
+    req = urllib2.Request(source)
+    handle = urllib2.urlopen(req)
+    soup = bs4(handle.read(), 'html.parser')
+    Recipe['title'] = soup.title.string
+    Recipe['servings'] = soup.find_all('span', itemprop='recipeYield')[0].string
+    # Strip non-numeric
+    Recipe['source'] = source
+    Recipe['description'] = soup.find_all('p', itemprop='description')[0].string
+    # Ensure utf-8
+    return Response(to_json(Recipe))
 
 if __name__ == '__main__':
     app.run('0.0.0.0')

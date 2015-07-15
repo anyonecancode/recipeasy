@@ -20,6 +20,9 @@ data:
   volumes:
     - data/backups:/backups
 
+sample:
+  build: sample
+
 api:
   build: api
   ports:
@@ -32,6 +35,7 @@ api:
   links:
     - db:db
     - search:search
+    - sample:sample
 
 web:
   build: web
