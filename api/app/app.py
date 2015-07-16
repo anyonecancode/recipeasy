@@ -143,7 +143,7 @@ def import_recipe():
     soup = bs4(handle.read(), 'html.parser')
     Recipe['title'] = soup.title.string
     # Restrict to the step-by-step-modal children.. otherwise get two copies..
-    Recipe['servings'] = soup.find('span', itemprop='recipeYield').string
+    Recipe['servings'] = int(soup.find('span', itemprop='recipeYield').string.replace('Servings', '').strip())
     # Strip non-numeric
     Recipe['source'] = source
     Recipe['description'] = soup.find('p', itemprop='description').string
@@ -152,10 +152,10 @@ def import_recipe():
     Recipe['directions'] = []
 
     for ingredient in soup.find_all('li', itemprop='ingredients'):
-        Recipe['ingredients'].append(ingredient.text)
+        Recipe['ingredients'].append(ingredient.text.strip())
 
     for direction in soup.find('section', id='instructions').find_all('div', itemprop='recipeInstructions'):
-        Recipe['directions'].append(direction.text)
+        Recipe['directions'].append(direction.text.strip())
 
     return Response(to_json(Recipe), mimetype='application/json')
 
