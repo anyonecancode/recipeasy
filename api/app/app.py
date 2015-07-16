@@ -142,12 +142,22 @@ def import_recipe():
     handle = urllib2.urlopen(req)
     soup = bs4(handle.read(), 'html.parser')
     Recipe['title'] = soup.title.string
-    Recipe['servings'] = soup.find_all('span', itemprop='recipeYield')[0].string
+    # Restrict to the step-by-step-modal children.. otherwise get two copies..
+    Recipe['servings'] = soup.find('span', itemprop='recipeYield').string
     # Strip non-numeric
     Recipe['source'] = source
-    Recipe['description'] = soup.find_all('p', itemprop='description')[0].string
+    Recipe['description'] = soup.find('p', itemprop='description').string
     # Ensure utf-8
-    return Response(to_json(Recipe))
+    Recipe['ingredients'] = []
+    Recipe['directions'] = []
+
+    for ingredient in soup.find_all('li', itemprop='ingredients'):
+        Recipe['ingredients'].append(ingredient.text)
+
+    for direction in soup.find('section', id='instructions').find_all('div', itemprop='recipeInstructions'):
+        Recipe['directions'].append(direction.text)
+
+    return Response(to_json(Recipe), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
