@@ -6,7 +6,8 @@ angular.module('recipeasy', [
   'ngSanitize',
   'recipeasy.controllers',
   'recipeasy.services',
-  'recipeasy.directives'
+  'recipeasy.directives',
+  'recipeasy.filters'
 ])
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $locationProvider.html5Mode(true);
@@ -42,5 +43,6 @@ angular.module('recipeasy', [
 angular.module('recipeasy.controllers', ['recipeasy.services']);
 angular.module('recipeasy.services', ['ngResource']);
 angular.module('recipeasy.directives',[]);
+angular.module('recipeasy.filters',[]);
 
 }());

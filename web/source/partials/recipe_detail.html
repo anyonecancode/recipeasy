@@ -12,7 +12,7 @@
 
   <div class="row" data-ng-if="recipe.source">
     <section class="col-md-12">
-      <p><em>{{recipe.source}}</em></p>
+      <p><em data-ng-bind-html="recipe.source|linkify"></em></p>
     </section>
   </div><!--row-->
 
