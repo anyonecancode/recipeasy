@@ -25,10 +25,10 @@ angular.module('recipeasy', [
     templateUrl: '/partials/recipe_detail.html'
   })
   .when('/new-recipe', {
-    templateUrl: '/partials/recipe_new.html'
+    templateUrl: '/partials/recipe_create_edit.html'
   })
   .when('/edit-recipe/:id', {
-    templateUrl: '/partials/recipe_new.html'
+    templateUrl: '/partials/recipe_create_edit.html'
   })
   .when('/search', {
     controller: 'CtrlSearchResults',
