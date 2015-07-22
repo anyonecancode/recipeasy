@@ -1,8 +1,9 @@
-  <nav class="nav">
-    <a href="/recipes" class="btn btn-link"> View all recipes</a>
-    <a href="/new-recipe" class="btn btn-link">Add recipe</a>
-  </nav>
+<nav class="nav">
+  <a href="/recipes" class="btn btn-link"> View all recipes</a>
+  <a href="/new-recipe" class="btn btn-link">Add recipe</a>
+</nav>
 
+<div recipe-detail>
   <header class="page-header">
     <h1>
       {{recipe.title}} <a href="/edit-recipe/{{recipe._id}}" class="btn btn-info">Edit</a><br />
@@ -37,3 +38,4 @@
   <div class="row" data-ng-if="recipe.notes">
     <section ng-model="recipe.notes" class="pre">{{recipe.notes}}</section>
   </div><!--row-->
+</div>
