@@ -3,7 +3,7 @@
   "language":"javascript",
   "views": {
     "ByTitle": {
-      "map": "function(doc) {if (doc.title) {emit(doc.title, doc.title);}}"
+      "map": "function(doc) {if (doc.title) {emit(doc.title, {external: doc.external});}}"
     }
   },
   "filters": {
