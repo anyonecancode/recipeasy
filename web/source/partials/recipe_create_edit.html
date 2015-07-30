@@ -6,107 +6,105 @@
   <h1 page-header>{{header}}</h1>
 </header>
 
-<div recipe-detail>
-  <form form-new-recipe>
+<form form-new-recipe>
 
-    <input readonly data-ng-if="recipe._id" value="{{recipe._id}}" hidden />
-    <input readonly data-ng-if="recipe._rev" value="{{recipe._rev}}" hidden />
+  <input readonly data-ng-if="recipe._id" value="{{recipe._id}}" hidden />
+  <input readonly data-ng-if="recipe._rev" value="{{recipe._rev}}" hidden />
+
+  <div class="row">
+    <div class="form-group col-md-8">
+      <label for="title">Title (required)</label>
+      <input
+      class="form-control"
+      data-ng-model="recipe.title"
+      name="title"
+      placeholder="The recipe's name"
+      required
+      type="text" />
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="servings">Servings (optional)</label>
+      <input
+      class="form-control"
+      data-ng-model="recipe.servings"
+      name="servings"
+      placeholder="Choose a number"
+      type="number" />
+    </div>
+  </div><!--row-->
+
+  <div class="row">
+    <div class="form-group col-md-8">
+      <label for="source">Source (optional)</label>
+      <input
+      class="form-control"
+      data-ng-model="recipe.source"
+      name="source"
+      placeholder="Website, book, etc"
+      type="text" />
+    </div>
+
+    <div class="form-group col-md-4 checkbox">
+      <label>
+        <input
+         data-ng-model="recipe.external"
+         name="external"
+         type="checkbox"
+         data-ng-checked="recipe.external" />
+        References external source
+      </label>
+    </div>
+  </div><!--row-->
+
+  <div data-ng-if="!recipe.external">
+    <div class="form-group">
+      <label for="description">Description (optional)</label>
+      <textarea
+        class="form-control"
+        data-ng-model="recipe.description"
+        name="description"
+        placeholder="Some context or background"
+        rows="5"></textarea>
+    </div>
 
     <div class="row">
-      <div class="form-group col-md-8">
-        <label for="title">Title (required)</label>
-        <input
-        class="form-control"
-        data-ng-model="recipe.title"
-        name="title"
-        placeholder="The recipe's name"
-        required
-        type="text" />
-      </div>
-
-      <div class="form-group col-md-4">
-        <label for="servings">Servings (optional)</label>
-        <input
-        class="form-control"
-        data-ng-model="recipe.servings"
-        name="servings"
-        placeholder="Choose a number"
-        type="number" />
-      </div>
-    </div><!--row-->
-
-    <div class="row">
-      <div class="form-group col-md-8">
-        <label for="source">Source (optional)</label>
-        <input
-        class="form-control"
-        data-ng-model="recipe.source"
-        name="source"
-        placeholder="Website, book, etc"
-        type="text" />
-      </div>
-
-      <div class="form-group col-md-4 checkbox">
-        <label>
-          <input
-           data-ng-model="recipe.external"
-           name="external"
-           type="checkbox"
-           data-ng-checked="recipe.external" />
-          References external source
-        </label>
-      </div>
-    </div><!--row-->
-
-    <div data-ng-if="!recipe.external">
-      <div class="form-group">
-        <label for="description">Description (optional)</label>
+      <div class="form-group col-md-5">
+        <label for="ingredients">Ingredients (required)</label>
         <textarea
           class="form-control"
-          data-ng-model="recipe.description"
-          name="description"
-          placeholder="Some context or background"
-          rows="5"></textarea>
+          data-ng-model="recipe.ingredients"
+          name="ingredients"
+          placeholder="What's in this recipe?"
+          required
+          rows="12"></textarea>
       </div>
 
-      <div class="row">
-        <div class="form-group col-md-5">
-          <label for="ingredients">Ingredients (required)</label>
-          <textarea
-            class="form-control"
-            data-ng-model="recipe.ingredients"
-            name="ingredients"
-            placeholder="What's in this recipe?"
-            required
-            rows="12"></textarea>
-        </div>
-
-        <div class="form-group col-md-7">
-          <label for="directions">Directions (required)</label>
-          <textarea
-            class="form-control"
-            data-ng-model="recipe.directions"
-            name="directions"
-            placeholder="Steps for making this recipe"
-            required
-            rows="12"></textarea>
-        </div>
-
-      </div><!--row-->
-
-      <div class="form-group">
-        <label for="notes">Notes (optional)</label>
+      <div class="form-group col-md-7">
+        <label for="directions">Directions (required)</label>
         <textarea
           class="form-control"
-          data-ng-model="recipe.notes"
-          name="notes"
-          placeholder="Adjustments, things to look out for, etc"
-          rows="3"></textarea>
+          data-ng-model="recipe.directions"
+          name="directions"
+          placeholder="Steps for making this recipe"
+          required
+          rows="12"></textarea>
       </div>
-    </div><!-- if not external-->
+
+    </div><!--row-->
 
     <div class="form-group">
-      <button class="btn btn-default" type="submit">Save recipe</button>
+      <label for="notes">Notes (optional)</label>
+      <textarea
+        class="form-control"
+        data-ng-model="recipe.notes"
+        name="notes"
+        placeholder="Adjustments, things to look out for, etc"
+        rows="3"></textarea>
     </div>
-  </form>
-</div>
+  </div><!-- if not external-->
+
+  <div class="form-group">
+    <button class="btn btn-default" type="submit">Save recipe</button>
+  </div>
+</form>
