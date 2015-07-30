@@ -6,6 +6,7 @@
 <div recipe-detail>
   <header class="page-header">
     <h1>
+      <span data-ng-if="recipe.external" class="glyphicon glyphicon-link" aria-hidden="true"></span>
       {{recipe.title}} <a href="/edit-recipe/{{recipe._id}}" class="btn btn-info">Edit</a><br />
       <small data-ng-if="recipe.servings">Serves {{recipe.servings}}</small>
     </h1>
@@ -13,29 +14,34 @@
 
   <div class="row" data-ng-if="recipe.source">
     <section class="col-md-12">
-      <p><em data-ng-bind-html="recipe.source|linkify"></em></p>
+      <p>
+      <span data-ng-if="recipe.external">Recipe available at </span>
+      <em data-ng-bind-html="recipe.source|linkify"></em>
+      </p>
     </section>
   </div><!--row-->
 
-  <section ng-model="recipe.description">
-    {{recipe.description}}
-  </section>
-
-  <div class="row">
-    <section class="col-md-4">
-      <h3>Ingredients</h3>
-      <div class="pre" data-ng-model="recipe.Ingredients">{{recipe.ingredients}}</div>
+  <div data-ng-if="!recipe.external">
+    <section ng-model="recipe.description">
+      {{recipe.description}}
     </section>
 
+    <div class="row">
+      <section class="col-md-4">
+        <h3>Ingredients</h3>
+        <div class="pre" data-ng-model="recipe.Ingredients">{{recipe.ingredients}}</div>
+      </section>
 
-    <section class="col-md-8">
-      <h3>Directions</h3>
-      <div class="pre" data-ng-model="recipe.instructions">{{recipe.directions}}</div>
-    </section>
 
-  </div><!--row-->
+      <section class="col-md-8">
+        <h3>Directions</h3>
+        <div class="pre" data-ng-model="recipe.instructions">{{recipe.directions}}</div>
+      </section>
 
-  <div class="row" data-ng-if="recipe.notes">
-    <section ng-model="recipe.notes" class="pre">{{recipe.notes}}</section>
-  </div><!--row-->
+    </div><!--row-->
+
+    <div class="row" data-ng-if="recipe.notes">
+      <section ng-model="recipe.notes" class="pre">{{recipe.notes}}</section>
+    </div><!--row-->
+  </div><!-- non-external recipes -->
 </div>

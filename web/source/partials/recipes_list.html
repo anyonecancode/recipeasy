@@ -8,5 +8,8 @@
 
 
 <div class="list-group" recipes-list>
-  <a class="list-group-item" data-ng-repeat="recipe in recipes" data-ng-href="/recipes/{{recipe.id}}">{{recipe.key}}</a>
+  <a class="list-group-item" data-ng-repeat="recipe in recipes" data-ng-href="/recipes/{{recipe.id}}">
+    <span data-ng-if="recipe.value.external" class="glyphicon glyphicon-link"></span>
+    {{recipe.key}}
+  </a>
 </div>

@@ -70,6 +70,12 @@ module.exports = function(grunt) {
         expand: true,
         src: 'bootstrap.css.map',
         dest: '<%= dest %>/css/'
+      },
+      fonts: {
+        cwd: 'node_modules/bootstrap/dist/fonts',
+        expand: true,
+        src: '**/*',
+        dest: '<%= dest %>/fonts/'
       }
     },
 
